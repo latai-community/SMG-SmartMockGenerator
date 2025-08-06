@@ -1,0 +1,24 @@
+flowchart TD
+    A[Start] --> B[Load predefined tables: OE, HR, Invest]
+    B --> C[User selects tables to mock]
+    C --> D[Clean foreign keys referencing unselected tables]
+    D --> E[User sets row count per table]
+    E --> F{Advanced config file provided?}
+    F -- Yes --> G[Load JSON or YAML config for Mockaroo]
+    F -- No --> H[Use default configuration]
+    G --> I[Build schema and mock config]
+    H --> I
+    I --> J[Send request to Mockaroo API]
+    J --> K[Receive synthetic data]
+    K --> L[User selects export format]
+    L --> M{Export format?}
+
+    M -- .sql --> N[Export DDL and INSERTs]
+    M -- .csv --> O[Export CSV per table]
+    M -- .xlsx --> P[Export Excel per table]
+    M -- .json --> Q[Export structured JSON]
+
+    N --> R[Done]
+    O --> R
+    P --> R
+    Q --> R
