@@ -1,0 +1,37 @@
+{
+  "name": "smg-cli",
+  "version": "1.0.0",
+  "description": "Synthetic Data Generation CLI",
+  "main": "dist/index.js",
+  "bin": {
+    "smg": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "node dist/index.js",
+    "dev": "npm run watch & npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "smg",
+    "synthetic",
+    "data",
+    "generation",
+    "cli"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "inquirer": "^9.2.10",
+    "log4js": "^6.9.1",
+    "ora": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^20.5.9",
+    "typescript": "^5.2.2"
+  }
+}

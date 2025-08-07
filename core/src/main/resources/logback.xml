@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logErrorSmg.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <appender name="SUMMARY_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>summarySmg.log</file>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="com.smg.logging.ErrorLogger" level="ERROR" additivity="false">
+        <appender-ref ref="ERROR_FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="com.smg.logging.SummaryLogger" level="INFO" additivity="false">
+        <appender-ref ref="SUMMARY_FILE" />
+    </logger>
+
+</configuration>

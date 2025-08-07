@@ -1,0 +1,17 @@
+target/
+bin/
+out/
+
+*.iml
+.idea/
+*.ipr
+*.iws
+
+.DS_Store
+Thumbs.db
+
+*.log
+
+dependency-reduced-pom.xml
+
+.mvn/
