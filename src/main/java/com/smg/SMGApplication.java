@@ -6,6 +6,7 @@ import com.smg.generation.DataGenerator;
 import com.smg.schemas.SchemaManager;
 import com.smg.logging.ErrorLogger;
 import com.smg.logging.SummaryLogger;
+import com.smg.schemas.entities.Schema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,56 +14,81 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+/**
+ * The main application class for the SMG (Synthetic Model Generator) tool.
+ * This class orchestrates the entire data generation process, including
+ * configuration loading, command-line argument parsing, schema management,
+ * and data generation.
+ *
+ * The application's workflow is as follows:
+ * 1. Load default configuration from `smg.properties`.
+ * 2. Override configuration settings with command-line arguments.
+ * 3. Validate the final configuration to ensure all required parameters are present.
+ * 4. Load and prepare the database schema(s).
+ * 5. Generate synthetic data based on the loaded schema and configuration.
+ * 6. Log a summary of the successful process or an error if an exception occurs.
+ */
 public class SMGApplication {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(SMGApplication.class);
-	
+
+	/**
+	 * The main entry point for the SMG application.
+	 *
+	 * @param args Command-line arguments passed to the application.
+	 */
 	public static void main(String[] args) {
-		// Inicialización de loggers
 		ErrorLogger errorLogger = new ErrorLogger();
 		SummaryLogger summaryLogger = new SummaryLogger();
-		
+
 		try {
-			// 1. Cargar la configuración por defecto desde smg.properties
+			// 1. Load the default configuration from smg.properties.
 			SMGConfig config = PropertyReader.loadDefaultConfig();
-			
-			// 2. Sobrescribir la configuración con los argumentos de la línea de comandos
+
+			// 2. Override the configuration with command-line arguments.
 			parseAndApplyArgs(args, config);
-			
-			// 3. Validar la configuración
+
+			// 3. Validate the final configuration.
 			validateConfig(config);
-			
-			// 4. Cargar y limpiar el esquema
+
+			// 4. Load and clean the schema(s) based on the configuration.
 			SchemaManager schemaManager = new SchemaManager();
-			schemaManager.loadSchemas(); // Carga todos los esquemas (HR, OE, etc.) desde recursos
-			var cleanedSchema = schemaManager.cleanSchema(config.getModel(), config.getTables());
-			
-			// 5. Generar los datos
+			schemaManager.loadSchemas(); // Loads all schemas (e.g., HR, OE) from application resources.
+			Schema cleanedSchema = schemaManager.cleanSchema(config.getModel(), config.getTables());
+
+			// 5. Generate the synthetic data.
 			DataGenerator dataGenerator = new DataGenerator(config, errorLogger, summaryLogger);
 			dataGenerator.generate(cleanedSchema);
-			
+
 			summaryLogger.logSummary("SMG process finished successfully.");
-			
+
+		} catch (IllegalArgumentException e) {
+			// Catch specific validation errors and provide a clear message
+			LOGGER.error("Configuration validation failed. Please check the provided configuration.", e);
+			errorLogger.logError("Configuration validation failed: " + e.getMessage(), e);
 		} catch (Exception e) {
+			// Generic catch-all for other unexpected errors
 			errorLogger.logError("An unexpected error occurred during the process.", e);
-			LOGGER.error("Application failed with an error. Check error log for details.");
+			LOGGER.error("Application failed with an unexpected error. Check the error log for details.");
 		}
 	}
-	
+
 	/**
-	 * Parses command-line arguments and updates the configuration.
+	 * Parses command-line arguments and updates the provided configuration object.
 	 * Arguments are expected in the format "-key value".
+	 *
+	 * @param args   The array of command-line arguments.
+	 * @param config The configuration object to update.
 	 */
 	private static void parseAndApplyArgs(String[] args, SMGConfig config) {
-		// Simple argument parsing. A more robust solution might use a library,
-		// but given the Node.js CLI, this is sufficient.
 		for (int i = 0; i < args.length; i += 2) {
 			String key = args[i];
-			// Ensure there's a value for the key
+
 			if (i + 1 < args.length) {
 				String value = args[i + 1];
-				
+
 				switch (key) {
 					case "-model" -> config.setModel(value);
 					case "-tables" -> config.setTables(Arrays.asList(value.split(",")));
@@ -75,49 +101,61 @@ public class SMGApplication {
 					case "-summaryFile" -> config.setSummaryFile(value);
 					case "-mockConfig" -> config.setMockConfig(value);
 					case "-mockApiKey" -> config.setMockApiKey(value);
-					default -> LOGGER.warn("Unknown argument: {}", key);
+					default -> LOGGER.warn("Unknown command-line argument: {}", key);
 				}
 			} else {
-				LOGGER.error("Missing value for argument: {}", key);
+				LOGGER.error("Missing value for command-line argument: {}", key);
 			}
 		}
 	}
-	
+
 	/**
-	 * Parses the synthetic generate string (e.g., "employee(100),department(50)").
+	 * Parses a string of synthetic generation instructions and returns a map
+	 * of table names to row counts.
+	 *
+	 * <p>The input string is expected to be in the format: "tableName1(rowCount1),tableName2(rowCount2)".
+	 *
+	 * @param value The string to parse.
+	 * @return A {@code Map<String, Integer>} where the key is the table name and the value is the row count.
 	 */
 	private static Map<String, Integer> parseSyntheticGenerate(String value) {
-		Map<String, Integer> rowCounts = new HashMap<>();
-		if (value != null && !value.isEmpty()) {
-			String[] pairs = value.split(",");
-			for (String pair : pairs) {
-				String[] parts = pair.trim().split("\\(");
-				if (parts.length == 2) {
-					String tableName = parts[0].trim();
-					try {
-						int rowCount = Integer.parseInt(parts[1].replace(")", ""));
-						if (rowCount > 0) {
-							rowCounts.put(tableName, rowCount);
-						} else {
-							LOGGER.error("Invalid row count for table {}: must be a positive integer.", tableName);
-						}
-					} catch (NumberFormatException e) {
-						LOGGER.error("Invalid row count format for table {}.", tableName);
-					}
-				}
-			}
-		}
-		return rowCounts;
+		return Optional.ofNullable(value)
+				.filter(s -> !s.isEmpty())
+				.map(s -> Arrays.stream(s.split(","))
+						.map(String::trim)
+						.filter(pair -> pair.matches("\\w+\\(\\d+\\)"))
+						.collect(Collectors.toMap(
+								pair -> pair.substring(0, pair.indexOf('(')),
+								pair -> Integer.parseInt(pair.substring(pair.indexOf('(') + 1, pair.indexOf(')'))),
+								(existing, replacement) -> existing,
+								HashMap::new
+						)))
+				.orElse(new HashMap<>());
 	}
-	
+
 	/**
-	 * Performs a simple validation of the configuration.
-	 * Throws an IllegalArgumentException if a critical configuration is missing.
+	 * Performs a simple validation of the configuration to ensure all critical
+	 * parameters are present.
+	 *
+	 * @param config The configuration object to validate.
+	 * @throws IllegalArgumentException if a critical configuration parameter is missing.
 	 */
-	private static void validateConfig(SMGConfig config) {
+	public static void validateConfig(SMGConfig config) {
+		// Critical parameters: model, tables, errorFile, summaryFile
 		Optional.ofNullable(config.getModel())
-			.filter(s -> !s.isEmpty())
-			.orElseThrow(() -> new IllegalArgumentException("Model must be specified."));
-		// Additional validation can be added here
+				.filter(s -> !s.isEmpty())
+				.orElseThrow(() -> new IllegalArgumentException("Model must be specified in the configuration."));
+
+		Optional.ofNullable(config.getTables())
+				.filter(list -> !list.isEmpty())
+				.orElseThrow(() -> new IllegalArgumentException("Tables must be specified in the configuration."));
+
+		Optional.ofNullable(config.getErrorFile())
+				.filter(s -> !s.isEmpty())
+				.orElseThrow(() -> new IllegalArgumentException("Error file must be specified in the configuration."));
+
+		Optional.ofNullable(config.getSummaryFile())
+				.filter(s -> !s.isEmpty())
+				.orElseThrow(() -> new IllegalArgumentException("Summary file must be specified in the configuration."));
 	}
 }
