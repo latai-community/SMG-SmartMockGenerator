@@ -9,5 +9,8 @@
         <module name="core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="smg-core" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
