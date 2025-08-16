@@ -55,9 +55,9 @@
 │   │   │
 │   │   └── resources/
 │   │       ├── schemas/
-│   │       │   ├── HR.sql            # DDL file for the HR schema.
-│   │       │   ├── OE.sql            # DDL file for the OE schema.
-│   │       │   └── Invest.sql        # DDL file for the Invest schema.
+│   │       │   ├── HR_struct.sql            # DDL file for the HR schema.
+│   │       │   ├── OE_struct.sql            # DDL file for the OE schema.
+│   │       │   └── Invest_struct.sql        # DDL file for the Invest schema.
 │   │       └── smg.properties        # Default properties file.
 │   └── test/
 │       └── java/
