@@ -23,6 +23,7 @@
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
         <project-lombok.version>1.18.38</project-lombok.version>
+        <jsql-parser.version>5.3</jsql-parser.version>
     </properties>
 
     <dependencies>
@@ -78,6 +79,11 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>${jsql-parser.version}</version>
         </dependency>
     </dependencies>
 
