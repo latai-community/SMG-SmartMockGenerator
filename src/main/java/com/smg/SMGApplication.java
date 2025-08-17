@@ -2,18 +2,15 @@ package com.smg;
 
 import com.smg.config.PropertyReader;
 import com.smg.config.SMGConfig;
-import com.smg.generation.DataGenerator;
-import com.smg.schemas.SchemaManager;
 import com.smg.logging.ErrorLogger;
 import com.smg.logging.SummaryLogger;
-import com.smg.schemas.entities.Schema;
+import com.smg.sqlparser.parser.SQL99.SqlSchemaParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.smg.sqlparser.domain.sql.Schema;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.nio.file.Path;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,13 +51,14 @@ public class SMGApplication {
 			validateConfig(config);
 
 			// 4. Load and clean the schema(s) based on the configuration.
-			SchemaManager schemaManager = new SchemaManager();
-			schemaManager.loadSchemas(); // Loads all schemas (e.g., HR, OE) from application resources.
-			Schema cleanedSchema = schemaManager.cleanSchema(config.getModel(), config.getTables());
-
-			// 5. Generate the synthetic data.
-			DataGenerator dataGenerator = new DataGenerator(config, errorLogger, summaryLogger);
-			dataGenerator.generate(cleanedSchema);
+			Path hr_path = Path.of("C:\\Users\\joseb\\Desktop\\SMG-SmartMockGenerator\\src\\main\\resources\\models\\hr\\struct\\HR_struct.sql");
+			
+			Schema schema = SqlSchemaParser.parseSchemaFromFile(hr_path, "HR");
+			Set<String> selectedTable = config.getTables();
+			String create_hr = schema.getTables().get("departments").getCreateSql(selectedTable);
+			
+			// tablas --> departments --> create-table --> fk desconectadas
+			System.out.println(create_hr);
 
 			summaryLogger.logSummary("SMG process finished successfully.");
 
@@ -91,7 +89,7 @@ public class SMGApplication {
 
 				switch (key) {
 					case "-model" -> config.setModel(value);
-					case "-tables" -> config.setTables(Arrays.asList(value.split(",")));
+					case "-tables" -> config.setTables(new HashSet<>(Arrays.asList(value.split(","))));
 					case "-diagram" -> config.setDiagramOutput(value);
 					case "-schemaOutput" -> config.setSchemaOutput(value);
 					case "-dataOutput" -> config.setDataOutput(value);

@@ -14,7 +14,8 @@ import java.nio.charset.StandardCharsets;
 public class SchemaLoader {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(SchemaLoader.class);
-	private static final String SCHEMAS_PATH = "schemas/";
+	private static final String SCHEMAS_PATH = "models/";
+	private static final String STRUCT_PATH = "struct/";
 	private static final String SQL_EXTENSION = ".sql";
 	
 	/**
@@ -23,8 +24,8 @@ public class SchemaLoader {
 	 * @param modelName The name of the model (e.g., "HR", "OE", "Invest").
 	 * @return The SQL content as a String, or null if the file is not found.
 	 */
-	public String loadSqlContent(String modelName) {
-		String filePath = SCHEMAS_PATH + modelName + SQL_EXTENSION;
+	public String loadSqlContent(String modelName ) {
+		String filePath = SCHEMAS_PATH + modelName.toLowerCase()+ "/" + STRUCT_PATH + modelName + "_struct" + SQL_EXTENSION;
 		
 		try (InputStream is = getClass().getClassLoader().getResourceAsStream(filePath)) {
 			if (is == null) {

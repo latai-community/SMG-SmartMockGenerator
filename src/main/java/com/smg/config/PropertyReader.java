@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -47,10 +46,10 @@ public class PropertyReader {
 
 			// Use Optional to handle potential null or empty string from properties file
 			Optional.ofNullable(properties.getProperty("model.tables"))
-					.map(s -> Arrays.stream(s.split(","))
-							.map(String::trim)
-							.collect(Collectors.toList()))
-					.ifPresent(config::setTables);
+				.map(s -> Arrays.stream(s.split(","))
+					.map(String::trim)
+					.collect(Collectors.toSet()))
+				.ifPresent(config::setTables);
 
 			config.setDiagramOutput(properties.getProperty("model.diagram"));
 			config.setSchemaOutput(properties.getProperty("output.schema"));

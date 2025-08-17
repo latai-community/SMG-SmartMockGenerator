@@ -5,21 +5,19 @@ import com.smg.sqlparser.domain.sql.Schema;
 import com.smg.sqlparser.domain.sql.Table;
 import com.smg.sqlparser.parser.SQL99.SqlSchemaParser;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class MainSqlParser {
 
 
 
     public static void main(String[] args) throws Exception {
-        String filePathStr = "D:\\JDev\\latai\\SMG-SmartMockGenerator\\src\\main\\resources\\models\\hr\\struct\\HR_struct.sql";
+        String filePathStr = "C:\\Users\\joseb\\Desktop\\SMG-SmartMockGenerator\\src\\main\\resources\\models\\hr\\struct\\HR_struct.sql";
         String schemaName = "HR";
-        String separatedTablesInput = "regions";
+        String separatedTablesInput = "regions, deparments,";
         process( Paths.get(filePathStr),schemaName, separatedTablesInput);
     }
 
@@ -36,13 +34,13 @@ public class MainSqlParser {
 
 
         List<String> tablesSelected = Arrays.stream(separatedTablesInput.split(","))
-                    .map(String::trim)
-                    .map(String::toLowerCase)
-                    .toList();
+            .map(String::trim)
+            .map(String::toLowerCase)
+            .toList();
 
-            List<Table> filteredTables = schema.getTablesValues().stream()
-                    .filter(table -> tablesSelected.contains(table.getName().toLowerCase()))
-                    .toList();
+        List<Table> filteredTables = schema.getTablesValues().stream()
+            .filter(table -> tablesSelected.contains(table.getName().toLowerCase()))
+            .toList();
 
             filteredTables.forEach(table -> System.out.println(table.getAsciiTable()));
 

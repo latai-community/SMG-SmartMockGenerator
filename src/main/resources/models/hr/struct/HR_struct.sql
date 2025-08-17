@@ -48,7 +48,8 @@ CREATE TABLE departments (
     department_name  VARCHAR(30) NOT NULL,
     manager_id       INT,
     location_id      INT,
-    FOREIGN KEY (location_id) REFERENCES locations(location_id)
+    FOREIGN KEY (location_id) REFERENCES locations(location_id),
+    FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
 );
 
 -- ==============================

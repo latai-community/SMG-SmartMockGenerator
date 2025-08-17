@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SMG-SmartMockGenerator.iml" filepath="$PROJECT_DIR$/.idea/SMG-SmartMockGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/antrl-poc.iml" filepath="$PROJECT_DIR$/antrl-poc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core.iml" filepath="$PROJECT_DIR$/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poc/poc.iml" filepath="$PROJECT_DIR$/poc/poc.iml" />
     </modules>
   </component>
 </project>

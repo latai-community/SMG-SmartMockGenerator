@@ -8,6 +8,7 @@ import com.smg.sqlparser.domain.sql.constraints.Unique;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 public class Table {
@@ -45,6 +46,83 @@ public class Table {
         return primaryKey != null && primaryKey.getColumns().stream()
             .anyMatch(c -> c.getName().equalsIgnoreCase(columnName));
     }
+    
+    
+    public String getCreateSql(Set<String> selectedTables) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CREATE TABLE ").append(name).append(" (\n");
+        
+        List<String> columnDefs = new ArrayList<>();
+        
+        for (Column col : columns) {
+            boolean skip = foreignKeys.stream().anyMatch(fk ->
+                fk.getSourceColumns().contains(col) &&
+                    (fk.getTargetTable() == null || !selectedTables.contains(fk.getTargetTable().getName()))
+            );
+            
+            if (skip) {
+                continue;
+            }
+            
+            StringBuilder colDef = new StringBuilder();
+            colDef.append(col.getName()).append(" ").append(col.getType());
+            
+            if (col.getLength() != null && col.getLength() > 0) {
+                colDef.append("(").append(col.getLength()).append(")");
+            }
+            
+            if (!col.isNullable()) {
+                colDef.append(" NOT NULL");
+            }
+            
+            if (col.isUnique()) {
+                colDef.append(" UNIQUE");
+            }
+            
+            columnDefs.add(colDef.toString());
+        }
+        
+        if (primaryKey != null && !primaryKey.getColumns().isEmpty()) {
+            String pkCols = primaryKey.getColumns().stream()
+                .map(Column::getName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+            columnDefs.add("PRIMARY KEY (" + pkCols + ")");
+        }
+        
+        for (Unique uc : uniqueConstraints) {
+            String cols = String.join(", ", uc.getColumnNames());
+            String ucName = (uc.getName() != null && !uc.getName().isBlank())
+                ? uc.getName()
+                : "UQ_" + name + "_" + String.join("_", uc.getColumnNames());
+            columnDefs.add("CONSTRAINT " + ucName + " UNIQUE (" + cols + ")");
+        }
+        
+        for (ForeignKey fk : foreignKeys) {
+            if (fk.getTargetTable() != null &&
+                selectedTables.contains(fk.getTargetTable().getName())) {
+                
+                String sourceCols = fk.getSourceColumns().stream()
+                    .map(Column::getName)
+                    .reduce((a, b) -> a + ", " + b)
+                    .orElse("");
+                String targetCols = fk.getTargetColumns().stream()
+                    .map(Column::getName)
+                    .reduce((a, b) -> a + ", " + b)
+                    .orElse("");
+                columnDefs.add(
+                    "FOREIGN KEY (" + sourceCols + ") REFERENCES " +
+                        fk.getTargetTable().getName() + " (" + targetCols + ")"
+                );
+            }
+        }
+        
+        sb.append("  ").append(String.join(",\n  ", columnDefs));
+        sb.append("\n);");
+        
+        return sb.toString();
+    }
+    
     
     private String mark(boolean condition) {
         return condition ? "X" : " ";
@@ -123,4 +201,5 @@ public class Table {
         sb.append(lineSeparator);
         return sb.toString();
     }
+    
 }
