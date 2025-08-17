@@ -57,8 +57,7 @@ INSERT INTO regions (region_id, region_name) VALUES
     (66, 'Aetheria');
 
 
-INSERT INTO countries
-VALUES
+INSERT INTO countries (country_id, country_name, region_id) VALUES
     -- Europe & Subregions
     ('IT', 'Italy', 13),
     ('DE', 'Germany', 12),
@@ -108,7 +107,6 @@ VALUES
     ('CF', 'Central African Republic', 54),
     ('GA', 'Gabon', 54),
     ('AO', 'Angola', 55),
-
     -- Americas
     ('US', 'United States of America', 21),
     ('CA', 'Canada', 21),
@@ -135,7 +133,6 @@ VALUES
     ('UY', 'Uruguay', 26),
     ('BR', 'Brazil', 24),
     ('PY', 'Paraguay', 26),
-
     -- Asia & Oceania
     ('JP', 'Japan', 31),
     ('KR', 'South Korea', 31),
@@ -169,7 +166,6 @@ VALUES
     ('KI', 'Kiribati', 44),
     ('MH', 'Marshall Islands', 44),
     ('FM', 'Federated States of Micronesia', 44),
-
 -- Fantasy Regions (Mythical & Sci-Fi Inspired)
     ('AT', 'Atlántida', 60),
     ('EL', 'Elphistan', 61),
@@ -195,7 +191,7 @@ VALUES
     ('DR', 'Dorne', 63),
     ('AR', 'Arrakis', 66); -- Dune
 
-INSERT INTO locations VALUES
+INSERT INTO locations (location_id, street_address, postal_code, city, state_province, country_id) VALUES
     -- Italy
     (1000, '1297 Via Cola di Rie', '00989', 'Roma', NULL, 'IT'),
     (1001, '93091 Calle della Testa', '10934', 'Venice', NULL, 'IT'),
@@ -306,7 +302,7 @@ INSERT INTO locations VALUES
     (1927, 'Alexanderplatz', '10178', 'Berlin', 'Berlin', 'DE'),
     (1928, 'Rathausmarkt', '20095', 'Hamburg', 'Hamburg', 'DE'),
     (1929, 'Schadowstrasse', '40212', 'Düsseldorf', 'North Rhine-Westphalia', 'DE'),
-    -- DRESDEN, Saxony
+    -- Germany: DRESDEN, Saxony
     (1930, 'Augustusstraße 10', '01067', 'Dresden', 'Saxony', 'DE'),
     (1931, 'Neumarkt 5', '01067', 'Dresden', 'Saxony', 'DE'),
     (1932, 'Hauptstraße 18', '01097', 'Dresden', 'Saxony', 'DE'),
@@ -322,7 +318,7 @@ INSERT INTO locations VALUES
     (1942, 'Jägerstraße 24', '01307', 'Dresden', 'Saxony', 'DE'),
     (1943, 'Zellescher Weg 12', '01217', 'Dresden', 'Saxony', 'DE'),
     (1944, 'Alaunstraße 50', '01099', 'Dresden', 'Saxony', 'DE'),
-    --  NÜRNBERG (Nuremberg), Bavaria
+    -- Germany: NÜRNBERG (Nuremberg), Bavaria
     (1945, 'Hauptmarkt 1', '90403', 'Nürnberg', 'Bavaria', 'DE'),
     (1946, 'Königstraße 25', '90402', 'Nürnberg', 'Bavaria', 'DE'),
     (1947, 'Plärrer 10', '90429', 'Nürnberg', 'Bavaria', 'DE'),
@@ -338,7 +334,7 @@ INSERT INTO locations VALUES
     (1957, 'Burgstraße 1', '90403', 'Nürnberg', 'Bavaria', 'DE'),
     (1958, 'Am Plärrer 19', '90429', 'Nürnberg', 'Bavaria', 'DE'),
     (1959, 'Schweinauer Hauptstraße 50', '90441', 'Nürnberg', 'Bavaria', 'DE'),
-    -- ROSTOCK, Mecklenburg-Vorpommern
+    -- Germany: ROSTOCK, Mecklenburg-Vorpommern
     (1960, 'Kröpeliner Straße 20', '18055', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
     (1961, 'Universitätsplatz 1', '18055', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
     (1962, 'Lange Straße 15', '18053', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
@@ -354,7 +350,7 @@ INSERT INTO locations VALUES
     (1972, 'Fischstraße 3', '18119', 'Warnemünde', 'Mecklenburg-Vorpommern', 'DE'),
     (1973, 'Alter Holzhafen 4', '18057', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
     (1974, 'Waldemarstraße 21', '18055', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
-    -- GÖRLITZ, Saxony (eastern Germany, Polish border)
+    -- Germany: GÖRLITZ, Saxony (eastern Germany, Polish border)
     (1975, 'Markt 1', '02826', 'Görlitz', 'Saxony', 'DE'),
     (1976, 'Reichenbacher Straße 10', '02826', 'Görlitz', 'Saxony', 'DE'),
     (1977, 'Obermarkt 7', '02826', 'Görlitz', 'Saxony', 'DE'),
@@ -378,9 +374,9 @@ INSERT INTO locations VALUES
     (1995, 'Albert-Einstein-Straße 2', '18059', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
     (1996, 'Hoher Damm 15', '18055', 'Rostock', 'Mecklenburg-Vorpommern', 'DE'),
     (1997, 'Klosterplatz 2', '02826', 'Görlitz', 'Saxony', 'DE'),
-    (1998, 'Bautzener Straße 33', '02826', 'Görlitz', 'Saxony', 'DE');
+    (1998, 'Bautzener Straße 33', '02826', 'Görlitz', 'Saxony', 'DE'),
 -- Spain
-    (2000, 'Calle Mayor 10', '28013', 'Madrid', 'Madrid', 'ES'),
+ (2000, 'Calle Mayor 10', '28013', 'Madrid', 'Madrid', 'ES'),
  (2001, 'Gran Vía 50', '28013', 'Madrid', 'Madrid', 'ES'),
  (2002, 'Paseo de Gracia 100', '08007', 'Barcelona', 'Catalonia', 'ES'),
  (2003, 'Rambla de Catalunya', '08007', 'Barcelona', 'Catalonia', 'ES'),
@@ -468,7 +464,7 @@ INSERT INTO locations VALUES
  (2529, 'Carrera Carlos Gardel', '08001', 'Barranquilla', 'Atlántico', 'CO'),
  (2530, 'Calle Julio Mario Santo Domingo', '11001', 'Bogotá', 'Cundinamarca', 'CO'),
  (2531, 'Avenida Salvador Dalí', '05001', 'Medellín', 'Antioquia', 'CO'),
--- Bucaramanga (Santander) – Numbered streets & avenues
+-- Colombia: Bucaramanga (Santander) – Numbered streets & avenues
  (2532, 'Calle 39 # 21-34', '680001', 'Bucaramanga', 'Santander', 'CO'),
  (2533, 'Carrera 10 # 34-50', '680002', 'Bucaramanga', 'Santander', 'CO'),
  (2534, 'Avenida Libertadores # 16-80', '680003', 'Bucaramanga', 'Santander', 'CO'),
@@ -478,7 +474,7 @@ INSERT INTO locations VALUES
  (2538, 'Calle 27 # 18-60', '680007', 'Girón', 'Santander', 'CO'),
  (2539, 'Carrera 20 # 40-100', '680008', 'Piedecuesta', 'Santander', 'CO'),
  (2540, 'Calle Real # 5-30', '680009', 'Socorro', 'Santander', 'CO'),
--- Girardot (Cundinamarca) – Mixed numbered & named (tourist zones)
+-- Colombia: Girardot (Cundinamarca) – Mixed numbered & named (tourist zones)
  (2541, 'Avenida del Río # 19-80', '250001', 'Girardot', 'Cundinamarca', 'CO'),
  (2542, 'Calle 19 # 5-42', '250002', 'Girardot', 'Cundinamarca', 'CO'),
  (2543, 'Carrera 6 # 18-100', '250003', 'Girardot', 'Cundinamarca', 'CO'),
@@ -489,19 +485,19 @@ INSERT INTO locations VALUES
  (2548, 'Calle Comercio # 8-12', '250008', 'Girardot', 'Cundinamarca', 'CO'),
  (2549, 'Transversal 9 # 19-40', '250009', 'Girardot', 'Cundinamarca', 'CO'),
  (2550, 'Diagonal 15 # 25-70', '250010', 'Girardot', 'Cundinamarca', 'CO'),
- -- Boyacá – Tunja, Villa de Leyva, Duitama
+ -- Colombia: Boyacá – Tunja, Villa de Leyva, Duitama
  (2551, 'Calle 15 # 10-40', '150001', 'Tunja', 'Boyacá', 'CO'),
  (2552, 'Carrera 8 # 15-60', '150002', 'Tunja', 'Boyacá', 'CO'),
  (2553, 'Avenida Panamericana # 20-100', '150003', 'Tunja', 'Boyacá', 'CO'),
  (2554, 'Calle del Humilladero # 4-25', '150004', 'Tunja', 'Boyacá', 'CO'),
  (2555, 'Carrera San Agustín # 12-30', '150005', 'Tunja', 'Boyacá', 'CO'),
--- Villa de Leyva: colonial, named streets
+-- Colombia: Villa de Leyva: colonial, named streets
  (2556, 'Calle del Diablo # 3-15', '154001', 'Villa de Leyva', 'Boyacá', 'CO'),
  (2557, 'Calle Mayor # 1-20', '154002', 'Villa de Leyva', 'Boyacá', 'CO'),
  (2558, 'Carrera de la Pradera # 5-10', '154003', 'Villa de Leyva', 'Boyacá', 'CO'),
  (2559, 'Calle de los Pies Descalzos # 7-22', '154004', 'Villa de Leyva', 'Boyacá', 'CO'),
  (2560, 'Calle de la Estrella # 2-40', '154005', 'Villa de Leyva', 'Boyacá', 'CO'),
--- Duitama & Sogamoso: numbered system
+-- Colombia: Duitama & Sogamoso: numbered system
  (2561, 'Calle 19 # 15-80', '150201', 'Duitama', 'Boyacá', 'CO'),
  (2562, 'Carrera 12 # 20-30', '150202', 'Duitama', 'Boyacá', 'CO'),
  (2563, 'Avenida Simón Bolívar # 10-90', '150203', 'Duitama', 'Boyacá', 'CO'),
@@ -512,7 +508,7 @@ INSERT INTO locations VALUES
  (2568, 'Carrera 20 # 25-100', '150208', 'Sogamoso', 'Boyacá', 'CO'),
  (2569, 'Avenida Central # 5-30', '150101', 'Tópaga', 'Boyacá', 'CO'),
  (2570, 'Calle 5 # 2-18', '150102', 'Paipa', 'Boyacá', 'CO'),
--- Cúcuta (Norte de Santander)
+-- Colombia: Cúcuta (Norte de Santander)
  (2571, 'Avenida 5 # 10-50', '540001', 'Cúcuta', 'Norte de Santander', 'CO'),
  (2572, 'Calle 10 # 7-40', '540002', 'Cúcuta', 'Norte de Santander', 'CO'),
  (2573, 'Carrera 12 # 15-60', '540003', 'Cúcuta', 'Norte de Santander', 'CO'),
@@ -523,7 +519,7 @@ INSERT INTO locations VALUES
  (2578, 'Calle 15 # 12-30', '540008', 'Cúcuta', 'Norte de Santander', 'CO'),
  (2579, 'Carrera 7 # 20-45', '540009', 'Cúcuta', 'Norte de Santander', 'CO'),
  (2580, 'Avenida 7 # 14-60', '540010', 'Cúcuta', 'Norte de Santander', 'CO'),
--- Bogotá – Realistic numbered grid
+-- Colombia: Bogotá – Realistic numbered grid
  (2581, 'Calle 72 # 7-20', '110011', 'Bogotá', 'Cundinamarca', 'CO'),
  (2582, 'Carrera 15 # 85-30', '110012', 'Bogotá', 'Cundinamarca', 'CO'),
  (2583, 'Avenida El Dorado # 63-15', '110013', 'Bogotá', 'Cundinamarca', 'CO'),
@@ -534,19 +530,19 @@ INSERT INTO locations VALUES
  (2588, 'Carrera 7 # 26-25', '110018', 'Bogotá', 'Cundinamarca', 'CO'),
  (2589, 'Avenida de las Américas # 68-100', '110019', 'Bogotá', 'Cundinamarca', 'CO'),
  (2590, 'Calle 13 # 15-80', '110020', 'Bogotá', 'Cundinamarca', 'CO'),
--- Medellín & Envigado – Grid system
+-- Colombia: Medellín & Envigado – Grid system
  (2591, 'Calle 10 # 45-20', '050011', 'Medellín', 'Antioquia', 'CO'),
  (2592, 'Carrera 43A # 10-90', '050012', 'Medellín', 'Antioquia', 'CO'),
  (2593, 'Avenida Oriental # 35-70', '050013', 'Medellín', 'Antioquia', 'CO'),
  (2594, 'Calle 13 # 30-45', '050014', 'Envigado', 'Antioquia', 'CO'),
  (2595, 'Carrera 38 # 28-100', '050015', 'Envigado', 'Antioquia', 'CO'),
--- Cali & Barranquilla
+-- Colombia: Cali & Barranquilla
  (2596, 'Calle 8 # 25-30', '760011', 'Cali', 'Valle del Cauca', 'CO'),
  (2597, 'Carrera 50 # 8-40', '760012', 'Cali', 'Valle del Cauca', 'CO'),
  (2598, 'Calle 79 # 5-25', '080011', 'Barranquilla', 'Atlántico', 'CO'),
- (2599, 'Carrera 51 # 90-100', '080012', 'Barranquilla', 'Atlántico', 'CO');
--- KRAKÓW (Małopolska) – Historic & modern
-    (2600, 'Rynek Główny 1', '31-042', 'Kraków', 'Lesser Poland', 'PL'),
+ (2599, 'Carrera 51 # 90-100', '080012', 'Barranquilla', 'Atlántico', 'CO')
+-- Poland: KRAKÓW (Małopolska) – Historic & modern
+ (2600, 'Rynek Główny 1', '31-042', 'Kraków', 'Lesser Poland', 'PL'),
  (2601, 'Floriańska Street 15', '31-019', 'Kraków', 'Lesser Poland', 'PL'),
  (2602, 'Grodzka 52', '31-044', 'Kraków', 'Lesser Poland', 'PL'),
  (2603, 'Kanonicza 20', '31-002', 'Kraków', 'Lesser Poland', 'PL'),
@@ -561,8 +557,7 @@ INSERT INTO locations VALUES
  (2612, 'Al. 3 Maja 21', '30-066', 'Kraków', 'Lesser Poland', 'PL'),
  (2613, 'ul. Lwowska 28', '30-622', 'Kraków', 'Lesser Poland', 'PL'),
  (2614, 'Reymonta 50', '30-059', 'Kraków', 'Lesser Poland', 'PL'),
-
--- 🌆 WROCŁAW (Lower Silesia) – River islands & historic core
+-- Poland:  WROCŁAW (Lower Silesia) – River islands & historic core
  2615, 'Rynek 1', '50-101', 'Wrocław', 'Lower Silesia', 'PL'),
  2616, 'Szewska 12', '50-122', 'Wrocław', 'Lower Silesia', 'PL'),
  2617, 'Świdnicka 30', '50-066', 'Wrocław', 'Lower Silesia', 'PL'),
@@ -578,8 +573,7 @@ INSERT INTO locations VALUES
  2627, 'Osobowicka 100', '53-091', 'Wrocław', 'Lower Silesia', 'PL'),
  2628, 'ul. Mickiewicza 47', '50-135', 'Wrocław', 'Lower Silesia', 'PL'),
  2629, 'Bednarska 21', '50-146', 'Wrocław', 'Lower Silesia', 'PL'),
-
--- 🏙️ POZNAŃ (Greater Poland) – Trade and university city
+-- Poland:  POZNAŃ (Greater Poland) – Trade and university city
  (2630, 'Rynek 1', '61-772', 'Poznań', 'Greater Poland', 'PL'),
  (2631, 'Święty Marcin 29', '61-807', 'Poznań', 'Greater Poland', 'PL'),
  (2632, 'ul. Paderewskiego 20', '61-770', 'Poznań', 'Greater Poland', 'PL'),
@@ -595,8 +589,7 @@ INSERT INTO locations VALUES
  (2642, 'Andersa 45', '60-166', 'Poznań', 'Greater Poland', 'PL'),
  (2643, 'Kościuszki 100', '60-781', 'Poznań', 'Greater Poland', 'PL'),
  (2644, 'ul. Ratajczaka 15', '60-680', 'Poznań', 'Greater Poland', 'PL'),
-
--- LUBLIN (Eastern Poland) – Historic and academic
+-- Poland: LUBLIN (Eastern Poland) – Historic and academic
  (2645, 'Rynek 1', '20-122', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2646, 'Jezuicka 10', '20-123', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2647, 'Kazimierza 22', '20-080', 'Lublin', 'Lublin Voivodeship', 'PL'),
@@ -612,12 +605,10 @@ INSERT INTO locations VALUES
  (2657, 'Węgierska 18', '20-126', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2658, 'Sielanka 7', '20-142', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2659, 'ul. Lubartowska 120', '20-039', 'Lublin', 'Lublin Voivodeship', 'PL'),
-
  (2660, 'Osiedle Nowe Bronowice 10', '30-706', 'Kraków', 'Lesser Poland', 'PL'),
  (2661, 'Kampus AGH, Al. Mickiewicza 30', '30-059', 'Kraków', 'Lesser Poland', 'PL'),
  (2662, 'Tyniecka 66', '30-399', 'Kraków', 'Lesser Poland', 'PL'),
  (2663, 'Zakopiańska 74', '30-397', 'Kraków', 'Lesser Poland', 'PL'),
-
  (2664, 'ul. Cypriana Kamila Norwida 25', '50-147', 'Wrocław', 'Lower Silesia', 'PL'),
  (2665, 'Polanka 10', '50-155', 'Wrocław', 'Lower Silesia', 'PL'),
  (2666, 'Szczytnicka 1', '51-150', 'Wrocław', 'Lower Silesia', 'PL'),
@@ -629,11 +620,8 @@ INSERT INTO locations VALUES
  (2672, 'Adama 30', '20-364', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2673, 'Kombatantów 12', '20-341', 'Lublin', 'Lublin Voivodeship', 'PL'),
  (2674, 'Spadochroniarzy 25', '20-180', 'Lublin', 'Lublin Voivodeship', 'PL');
-
-
--- 🌌 Fantasy Locations (1 per fantasy country)
-    (3100, 'Dragonstone Keep', 'DRG701', 'Dragonstone', NULL, 'WE')
-    ,
+-- Fantasy Location
+ (3100, 'Dragonstone Keep', 'DRG701', 'Dragonstone', NULL, 'WE'),
  (3101, 'Winterfell Castle', 'WTR001', 'Winterfell', NULL, 'WE'),
  (3102, 'Tower of Joy', 'TOJ001', 'Dorne', NULL, 'DR'),
  (3103, 'Arrakeen Bazaar', 'ARK001', 'Arrakis', NULL, 'AR'),
@@ -656,9 +644,8 @@ INSERT INTO locations VALUES
  (3120, 'Narnia Portal', 'NAR001', 'Lantern Waste', NULL, 'NA');
 
 
-INSERT INTO departments
-VALUES
-    -- 🏢 GLOBAL EXECUTIVE & STRATEGY
+INSERT INTO departments (department_id, department_name, manager_id, location_id) VALUES
+    -- GLOBAL EXECUTIVE & STRATEGY
     (300, 'Global Executive Office', NULL, 1200),
     (301, 'Corporate Strategy & M&A', NULL, 1204),
     (302, 'LATAI Ethics & AI Governance', NULL, 1800),
@@ -668,7 +655,7 @@ VALUES
     (306, 'Brand Integration & Legacy Heritage', NULL, 2400),
     (307, 'Global Risk Management', NULL, 1700),
 
-    -- ☁️ CLOUD & INFRASTRUCTURE
+    --  CLOUD & INFRASTRUCTURE
     (400, 'LATAI Cloud Platform', NULL, 1208),
     (401, 'Global Data Center Ops', NULL, 1210),
     (402, 'Edge Computing Division', NULL, 1215),
@@ -677,7 +664,7 @@ VALUES
     (405, 'Quantum Networking Research', NULL, 1102),
     (406, 'Undersea Cable Operations', NULL, 1301),
 
-    -- 🤖 ARTIFICIAL INTELLIGENCE
+    -- ARTIFICIAL INTELLIGENCE
     (500, 'LATAI AI Research (LAIR)', NULL, 1205),
     (501, 'Natural Language Processing', NULL, 1209),
     (502, 'Computer Vision Lab', NULL, 1212),
@@ -687,7 +674,7 @@ VALUES
     (506, 'Multimodal AI Integration', NULL, 1222),
     (507, 'AI Training Infrastructure', NULL, 1226),
 
-    -- 💻 SOFTWARE & DEVELOPMENT
+    -- SOFTWARE & DEVELOPMENT
     (600, 'LATAI OS Development', NULL, 1207),
     (601, 'Developer Tools & SDKs', NULL, 1214),
     (602, 'Open Source Strategy', NULL, 1219),
@@ -695,7 +682,7 @@ VALUES
     (604, 'Low-Code/No-Code Platforms', NULL, 1227),
     (605, 'API Ecosystem Management', NULL, 1229),
 
-    -- 🛡️ SECURITY
+    -- SECURITY
     (700, 'Global Cybersecurity Division', NULL, 1908),
     (701, 'Threat Intelligence Unit', NULL, 1910),
     (702, 'Zero Trust Architecture', NULL, 1915),
@@ -704,7 +691,7 @@ VALUES
     (705, 'Cloud Security Engineering', NULL, 1211),
     (706, 'Incident Response Coordination', NULL, 1927),
 
-    -- 🚗 LATAI AUTO (ex-Volkswagen, Tesla synergy)
+    -- LATAI AUTO (ex-Volkswagen, Tesla synergy)
     (800, 'Autonomous Vehicle Division', NULL, 1906),
     (801, 'EV Battery Innovation', NULL, 1912),
     (802, 'Smart Mobility Platforms', NULL, 1918),
@@ -712,7 +699,7 @@ VALUES
     (804, 'Urban Mobility AI', NULL, 1925),
     (805, 'Connected Car Services', NULL, 1928),
 
-    -- 🥤 LATAI BEVERAGE (ex-Coca-Cola, Nestlé synergy)
+    -- LATAI BEVERAGE (ex-Coca-Cola, Nestlé synergy)
     (900, 'Global Beverage Innovation', NULL, 2581),
     (901, 'Sustainable Packaging R&D', NULL, 2583),
     (902, 'Smart Vending & Distribution', NULL, 2585),
@@ -720,21 +707,21 @@ VALUES
     (904, 'LatAm Beverage Operations', NULL, 2541),
     (905, 'Digital Consumer Engagement', NULL, 2589),
 
-    -- 📱 LATAI DEVICES (ex-Meta, Apple, Samsung synergy)
+    -- LATAI DEVICES (ex-Meta, Apple, Samsung synergy)
     (1000, 'Wearables & AR Hardware', NULL, 1206),
     (1001, 'Neural Interface Research', NULL, 1213),
     (1002, 'Holographic Displays', NULL, 1216),
     (1003, 'Smart Home Ecosystem', NULL, 1223),
     (1004, 'Device Recycling & Circularity', NULL, 1228),
 
-    -- 🌐 NETWORK & OPERATIONS
+    -- NETWORK & OPERATIONS
     (1100, 'Global NOC (Network Ops)', NULL, 1217),
     (1101, '5G/6G Infrastructure', NULL, 1224),
     (1102, 'Satellite Internet Division', NULL, 1230),
     (1103, 'Content Delivery Network', NULL, 1202),
     (1104, 'Disaster Recovery Ops', NULL, 1201),
 
-    -- 🌍 REGIONAL HEADQUARTERS
+    -- REGIONAL HEADQUARTERS
     (1200, 'LATAI Americas HQ', NULL, 1200),
     (1201, 'LATAI EMEA HQ', NULL, 1800),
     (1202, 'LATAI APAC HQ', NULL, 1100),
@@ -745,7 +732,7 @@ VALUES
     (1207, 'LATAI Andean Region', NULL, 2551),
     (1208, 'LATAI Southern Cone', NULL, 2402),
 
-    -- 🛠️ ENGINEERING & R&D
+    -- ENGINEERING & R&D
     (1300, 'Quantum Computing Lab', NULL, 1104),
     (1301, 'Photonics & Silicon Integration', NULL, 1106),
     (1302, 'Advanced Semiconductor Design', NULL, 1108),
@@ -753,14 +740,14 @@ VALUES
     (1304, 'Human-Robot Interaction', NULL, 1209),
     (1305, 'Bio-Inspired Engineering', NULL, 1110),
 
-    -- 🌱 RENEWABLES & SUSTAINABILITY
+    -- RENEWABLES & SUSTAINABILITY
     (1400, 'Green Data Center Initiative', NULL, 1904),
     (1401, 'Carbon Tracking Systems', NULL, 1804),
     (1402, 'Solar Microgrid Development', NULL, 2543),
     (1403, 'Water Stewardship Program', NULL, 2545),
     (1404, 'Circular Supply Chain', NULL, 1914),
 
-    -- 🧑‍💼 CORPORATE FUNCTIONS (Distributed)
+    -- CORPORATE FUNCTIONS (Distributed)
     (1500, 'Global HR Operations', NULL, 1700),
     (1501, 'Talent Acquisition & Recruiting', NULL, 2600),
     (1502, 'Learning & Development', NULL, 2605),
@@ -771,14 +758,14 @@ VALUES
     (1507, 'Mergers & Divestitures', NULL, 1204),
     (1508, 'Investor Relations', NULL, 1200),
 
-    -- 💰 FINANCE & COMMERCE
+    -- FINANCE & COMMERCE
     (1600, 'Global Treasury Management', NULL, 1700),
     (1601, 'Cryptocurrency & Digital Assets', NULL, 1210),
     (1602, 'FinTech Innovation Lab', NULL, 1220),
     (1603, 'Dynamic Pricing Algorithms', NULL, 1225),
     (1604, 'Blockchain Ledger Systems', NULL, 1230),
 
-    -- 🌐 SALES & CUSTOMER
+    -- SALES & CUSTOMER
     (1700, 'Enterprise Sales - North America', NULL, 1200),
     (1701, 'Public Sector Sales - EMEA', NULL, 1801),
     (1702, 'SMB Cloud Sales - LatAm', NULL, 2535),
@@ -786,7 +773,7 @@ VALUES
     (1704, 'Partner Alliance Program', NULL, 1211),
     (1705, 'Customer Success Management', NULL, 1219),
 
-    -- 🧪 RESEARCH CAMPUSES
+    -- RESEARCH CAMPUSES
     (1800, 'LATAI Research Campus - Silicon Valley', NULL, 1205),
     (1801, 'LATAI Research Campus - Munich', NULL, 1905),
     (1802, 'LATAI Research Campus - Warsaw', NULL, 2600),
@@ -794,13 +781,13 @@ VALUES
     (1804, 'LATAI Research Campus - Bogotá', NULL, 2532),
     (1805, 'LATAI Research Campus - Barcelona', NULL, 2000),
 
-    -- 🖥️ IT SUPPORT & INTERNAL TOOLS
+    --  IT SUPPORT & INTERNAL TOOLS
     (1900, 'Global IT Support', NULL, 1700),
     (1901, 'Internal SaaS Platform Ops', NULL, 1700),
     (1902, 'Employee Device Management', NULL, 1700),
     (1903, 'Corporate Identity & Access', NULL, 1700),
 
-    -- 🌐 DIGITAL EXPERIENCE
+    -- DIGITAL EXPERIENCE
     (2000, 'Metaverse Experience Studio', NULL, 1000),
     (2001, 'Immersive Content Production', NULL, 1002),
     (2002, 'Digital Twin Engineering', NULL, 1907),
@@ -808,8 +795,7 @@ VALUES
     (2004, 'Personalization Engine Team', NULL, 1221);
 
 
-INSERT INTO jobs
-VALUES
+INSERT INTO jobs ( job_id, job_title , min_salary, max_salary) VALUES
     -- ✅ Keep your original jobs
     ('AD_PRES', 'President', 20080, 40000),
     ('AD_VP', 'Administration Vice President', 15000, 30000),
@@ -903,10 +889,8 @@ VALUES
     ('UX_RESEARCHER', 'UX Researcher', 8000, 17000),
     ('UI_DESIGNER', 'UI/UX Designer', 7000, 15000);
 
-
-INSERT INTO employees
-VALUES
-    -- 🌐 EXECUTIVE LEADERSHIP (Global HQ roles)
+INSERT INTO employees (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id) VALUES
+    -- EXECUTIVE LEADERSHIP (Global HQ roles)
     (10, 'Amara', 'Nkosi', 'ANKOSI', '1.650.555.0010', TO_DATE('15-03-2012', 'dd-MM-yyyy'), 'LT_CTO', 48000, NULL, NULL,
      300),
     (11, 'Klaus', 'Hofmann', 'KHOFMANN', '49.89.555.0011', TO_DATE('20-05-2013', 'dd-MM-yyyy'), 'LT_CIO', 46000, NULL,
@@ -922,7 +906,7 @@ VALUES
     (16, 'Sophie', 'Dubois', 'SDUBOIS', '33.1.555.0016', TO_DATE('22-02-2018', 'dd-MM-yyyy'), 'LT_CLO', 42000, NULL, 10,
      306),
 
-    -- 🤖 AI & MACHINE LEARNING (USA, Germany, Poland)
+    -- AI & MACHINE LEARNING (USA, Germany, Poland)
     (17, 'Aiden', 'Chen', 'ACHEN', '1.650.555.0017', TO_DATE('10-06-2015', 'dd-MM-yyyy'), 'AI_RESEARCH', 23000, NULL,
      10, 500),
     (18, 'Lina', 'Schmidt', 'LSCHMIDT', '49.30.555.0018', TO_DATE('14-08-2016', 'dd-MM-yyyy'), 'AI_RESEARCH', 22000,
@@ -940,7 +924,7 @@ VALUES
     (24, 'Tariq', 'Khan', 'TKHAN', '92.51.555.0024', TO_DATE('22-01-2022', 'dd-MM-yyyy'), 'AI_ETHICS', 17000, NULL, 13,
      505),
 
-    -- ☁️ CLOUD & INFRASTRUCTURE (USA, Germany)
+    ---️ CLOUD & INFRASTRUCTURE (USA, Germany)
     (25, 'Dev', 'Patel', 'DPATEL', '1.650.555.0025', TO_DATE('05-04-2014', 'dd-MM-yyyy'), 'CLD_ARCH', 24000, NULL, 11,
      400),
     (26, 'Anika', 'Müller', 'AMUELLER', '49.30.555.0026', TO_DATE('12-06-2015', 'dd-MM-yyyy'), 'DEVOPS_ENG', 19000,
@@ -956,7 +940,7 @@ VALUES
     (31, 'Olivia', 'Kim', 'OKIM', '82.2.555.0031', TO_DATE('18-04-2020', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 23000, NULL, 30,
      1301),
 
-    -- 💻 SOFTWARE DEVELOPMENT (Global)
+    -- SOFTWARE DEVELOPMENT (Global)
     (32, 'Ethan', 'Ng', 'ENG', '1.650.555.0032', TO_DATE('01-07-2015', 'dd-MM-yyyy'), 'FULLSTACK_DEV', 16000, NULL, 25,
      600),
     (33, 'Lea', 'Schulz', 'LSCHULZ', '49.30.555.0033', TO_DATE('09-09-2016', 'dd-MM-yyyy'), 'BACKEND_DEV', 15500, NULL,
@@ -972,7 +956,7 @@ VALUES
     (38, 'Dariusz', 'Kowalski', 'DKOWAL', '48.22.555.0038', TO_DATE('19-08-2021', 'dd-MM-yyyy'), 'API_ENGINEER', 18500,
      NULL, 32, 606),
 
-    -- 🛡️ CYBERSECURITY (Germany, USA, Poland)
+    --  CYBERSECURITY (Germany, USA, Poland)
     (39, 'Marcus', 'Reed', 'MREED', '1.650.555.0039', TO_DATE('02-10-2014', 'dd-MM-yyyy'), 'SEC_ANALYST', 14500, NULL,
      29, 701),
     (40, 'Clara', 'Meier', 'CMEIER', '49.30.555.0040', TO_DATE('10-12-2015', 'dd-MM-yyyy'), 'PENTESTER', 18000, NULL,
@@ -984,7 +968,7 @@ VALUES
     (43, 'Ivan', 'Petrov', 'IPETROV', '7.495.555.0043', TO_DATE('04-07-2018', 'dd-MM-yyyy'), 'ZERO_TRUST', 25000, NULL,
      29, 705),
 
-    -- 🚗 LATAI AUTO (Germany, USA, Poland)
+    -- LATAI AUTO (Germany, USA, Poland)
     (44, 'Felix', 'Bauer', 'FBAUER', '49.711.555.0044', TO_DATE('12-09-2013', 'dd-MM-yyyy'), 'AUTO_PILOT', 22000, NULL,
      15, 800),
     (45, 'Nina', 'Scholz', 'NSCHOLZ', '49.711.555.0045', TO_DATE('20-11-2014', 'dd-MM-yyyy'), 'BATTERY_SCIENTIST',
@@ -994,7 +978,7 @@ VALUES
     (47, 'Julian', 'Rossi', 'JROSSI', '39.6.555.0047', TO_DATE('06-04-2016', 'dd-MM-yyyy'), 'CONNECTED_CAR', 19500,
      NULL, 44, 805),
 
-    -- 🥤 LATAI BEVERAGE (Colombia, Spain, USA)
+    -- LATAI BEVERAGE (Colombia, Spain, USA)
     (48, 'Sofia', 'Ramírez', 'SRAMIREZ', '57.1.555.0048', TO_DATE('14-06-2015', 'dd-MM-yyyy'), 'BEVERAGE_CHEMIST',
      12500, NULL, 16, 901),
     (49, 'Mateo', 'Gómez', 'MGOMEZ', '57.1.555.0049', TO_DATE('22-08-2016', 'dd-MM-yyyy'), 'SUSTAIN_PACKAGING', 13500,
@@ -1004,7 +988,7 @@ VALUES
     (51, 'Diego', 'López', 'DLOPEZ', '52.55.555.0051', TO_DATE('09-12-2018', 'dd-MM-yyyy'), 'LATAM_BEV_OPS', 13000,
      NULL, 48, 904),
 
-    -- 🌍 REGIONAL HQs (Global)
+    -- REGIONAL HQs (Global)
     (52, 'Aisha', 'Abdullah', 'AABDULL', '971.4.555.0052', TO_DATE('17-02-2014', 'dd-MM-yyyy'), 'LT_REG_MGR', 18000,
      NULL, 10, 1200),
     (53, 'Lukas', 'Weber', 'LWEBER', '49.30.555.0053', TO_DATE('25-04-2015', 'dd-MM-yyyy'), 'LT_REG_MGR', 18000, NULL,
@@ -1016,7 +1000,7 @@ VALUES
     (56, 'Piotr', 'Kaczmarek', 'PKACZ', '48.22.555.0056', TO_DATE('19-11-2018', 'dd-MM-yyyy'), 'LT_REG_MGR', 18000,
      NULL, 10, 1204),
 
-    -- 🧑‍💼 CORPORATE FUNCTIONS (Global)
+    -- CORPORATE FUNCTIONS (Global)
     (57, 'Grace', 'Lin', 'GLIN', '86.10.555.0057', TO_DATE('27-01-2016', 'dd-MM-yyyy'), 'HR_BUS_PARTNER', 12000, NULL,
      16, 1500),
     (58, 'Emilia', 'Nowak', 'ENOWAK', '48.22.555.0058', TO_DATE('05-04-2017', 'dd-MM-yyyy'), 'HR_REP', 8500, NULL, 57,
@@ -1034,7 +1018,7 @@ VALUES
     (64, 'Zara', 'Malik', 'ZMALIK', '92.51.555.0064', TO_DATE('22-05-2023', 'dd-MM-yyyy'), 'FIN_ANALYST', 10200, NULL,
      12, 1600),
 
-    -- 🌱 SUSTAINABILITY & ETHICS
+    -- SUSTAINABILITY & ETHICS
     (65, 'Leo', 'Schäfer', 'LSCHA', '49.30.555.0065', TO_DATE('10-07-2016', 'dd-MM-yyyy'), 'SUSTAIN_ENG', 13500, NULL,
      13, 1400),
     (66, 'Yara', 'Nasr', 'YNASR', '20.2.555.0066', TO_DATE('18-09-2017', 'dd-MM-yyyy'), 'CARBON_ANALYST', 12500, NULL,
@@ -1042,7 +1026,7 @@ VALUES
     (67, 'Filip', 'Mazur', 'FMAZUR', '48.22.555.0067', TO_DATE('26-11-2018', 'dd-MM-yyyy'), 'CIRCULAR_DESIGN', 14000,
      NULL, 65, 1404),
 
-    -- 🧪 RESEARCH CAMPUSES (Global)
+    -- RESEARCH CAMPUSES (Global)
     (68, 'Arun', 'Kumar', 'AKUMAR', '91.80.555.0068', TO_DATE('04-02-2015', 'dd-MM-yyyy'), 'QUANTUM_RES', 30000, NULL,
      30, 1800),
     (69, 'Sven', 'Lund', 'SLUND', '46.8.555.0069', TO_DATE('12-04-2016', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 22000, NULL, 31,
@@ -1056,7 +1040,7 @@ VALUES
     (73, 'Marta', 'Iglesias', 'MIGLESI', '34.91.555.0073', TO_DATE('13-01-2020', 'dd-MM-yyyy'), 'NLP_ENGINEER', 20000,
      NULL, 21, 1805),
 
-    -- 🖥️ IT SUPPORT & INTERNAL TOOLS
+    --  IT SUPPORT & INTERNAL TOOLS
     (74, 'David', 'Torres', 'DTORRES', '57.1.555.0074', TO_DATE('01-03-2018', 'dd-MM-yyyy'), 'IT_PROG', 9500, NULL, 10,
      1900),
     (75, 'Anna', 'Kovács', 'AKOVACS', '36.1.555.0075', TO_DATE('09-05-2019', 'dd-MM-yyyy'), 'IT_PROG', 9000, NULL, 74,
@@ -1068,7 +1052,7 @@ VALUES
     (78, 'Carlos', 'Mendes', 'CMENDES', '55.11.555.0078', TO_DATE('02-12-2022', 'dd-MM-yyyy'), 'IT_PROG', 8000, NULL,
      74, 1900),
 
-    -- 🌐 DIGITAL EXPERIENCE & METAWORLD
+    -- DIGITAL EXPERIENCE & METAWORLD
     (79, 'Maya', 'Desai', 'MDESAI', '1.650.555.0079', TO_DATE('10-04-2017', 'dd-MM-yyyy'), 'UX_RESEARCHER', 16000, NULL,
      15, 2000),
     (80, 'Leon', 'Becker', 'LBECKER', '49.30.555.0080', TO_DATE('18-06-2018', 'dd-MM-yyyy'), 'UI_DESIGNER', 14000, NULL,
@@ -1080,7 +1064,7 @@ VALUES
     (83, 'Nadia', 'El-Sayed', 'NELSAY', '20.2.555.0083', TO_DATE('11-01-2021', 'dd-MM-yyyy'), 'IMMERSIVE_PROD', 18000,
      NULL, 79, 2002),
 
-    -- 🌍 GLOBAL DISTRIBUTION (More regional specialists)
+    -- GLOBAL DISTRIBUTION (More regional specialists)
     (84, 'Julia', 'Costa', 'JCOSTA', '55.11.555.0084', TO_DATE('19-03-2019', 'dd-MM-yyyy'), 'ML_ENGINEER', 20000, NULL,
      19, 501),
     (85, 'Tom', 'Wright', 'TWRIGHT', '1.650.555.0085', TO_DATE('27-05-2020', 'dd-MM-yyyy'), 'CLD_ARCH', 25000, NULL, 25,
@@ -1113,7 +1097,6 @@ VALUES
      NULL, 38, 606),
     (99, 'Leonardo', 'Rossi', 'LROSSI', '39.6.555.0099', TO_DATE('18-01-2022', 'dd-MM-yyyy'), 'DATA_SCIENTIST', 20000,
      NULL, 20, 506),
-
     -- Continue filling roles globally (100–210)
     (100, 'Anya', 'Petrova', 'APETRO2', '7.495.555.0100', TO_DATE('26-03-2016', 'dd-MM-yyyy'), 'AI_RESEARCH', 24000,
      NULL, 17, 500),
@@ -1137,7 +1120,6 @@ VALUES
      74, 60),
     (110, 'Sophia', 'Müller', 'SMUELL2', '49.30.555.0110', TO_DATE('13-03-2017', 'dd-MM-yyyy'), 'ST_CLERK', 3100, NULL,
      120, 50),
-
     (111, 'Luca', 'Moretti', 'LMORET2', '39.6.555.0111', TO_DATE('21-05-2018', 'dd-MM-yyyy'), 'SH_CLERK', 3000, NULL,
      121, 50),
     (112, 'Chloe', 'Dubois', 'CDOUBO2', '33.1.555.0112', TO_DATE('29-07-2019', 'dd-MM-yyyy'), 'AC_ACCOUNT', 8600, NULL,
@@ -1158,7 +1140,6 @@ VALUES
      74, 60),
     (120, 'Maya', 'Singh', 'MSINGH2', '91.80.555.0120', TO_DATE('02-01-2023', 'dd-MM-yyyy'), 'HR_REP', 8400, NULL, 57,
      40),
-
     (121, 'Liam', 'Murphy', 'LMURPH2', '353.1.555.0121', TO_DATE('10-03-2016', 'dd-MM-yyyy'), 'FI_MGR', 16500, NULL, 11,
      100),
     (122, 'Emma', 'Rossi', 'EROSSI2', '39.6.555.0122', TO_DATE('18-05-2017', 'dd-MM-yyyy'), 'AC_MGR', 16200, NULL, 11,
@@ -1179,8 +1160,6 @@ VALUES
      80),
     (130, 'Sophie', 'Martin', 'SMARTI2', '33.1.555.0130', TO_DATE('22-10-2022', 'dd-MM-yyyy'), 'PR_REP', 10400, NULL,
      204, 70),
-
-    -- Continue to 210...
     (131, 'Mateus', 'Alves', 'MALVES2', '55.11.555.0131', TO_DATE('01-01-2023', 'dd-MM-yyyy'), 'IT_PROG', 9300, NULL,
      74, 60),
     (132, 'Nina', 'Bergmann', 'NBERG2', '49.30.555.0132', TO_DATE('10-03-2020', 'dd-MM-yyyy'), 'ST_CLERK', 3300, NULL,
@@ -1201,7 +1180,6 @@ VALUES
      60),
     (140, 'Luna', 'De Luca', 'LDLUC2', '39.6.555.0140', TO_DATE('21-07-2021', 'dd-MM-yyyy'), 'HR_REP', 8300, NULL, 57,
      40),
-
     (141, 'Sebastian', 'Wolf', 'SWOLF2', '49.30.555.0141', TO_DATE('30-09-2022', 'dd-MM-yyyy'), 'FIN_ANALYST', 11100,
      NULL, 12, 1600),
     (142, 'Aarav', 'Patel', 'APATEL2', '91.80.555.0142', TO_DATE('08-12-2023', 'dd-MM-yyyy'), 'DATA_ENGINEER', 17800,
@@ -1222,7 +1200,6 @@ VALUES
      121, 50),
     (150, 'Diego', 'Silva', 'DSILVA3', '55.11.555.0150', TO_DATE('19-05-2020', 'dd-MM-yyyy'), 'FI_ACCOUNT', 8600, NULL,
      108, 100),
-
     (151, 'Lina', 'Müller', 'LMUELL3', '43.1.555.0151', TO_DATE('28-07-2021', 'dd-MM-yyyy'), 'HR_REP', 8400, NULL, 57,
      40),
     (152, 'James', 'Taylor', 'JTAYLOR2', '1.650.555.0152', TO_DATE('06-09-2022', 'dd-MM-yyyy'), 'SA_REP', 7600, 0.20,
@@ -1243,7 +1220,6 @@ VALUES
      1500),
     (160, 'Jackson', 'Lee', 'JLEE2', '82.2.555.0160', TO_DATE('17-02-2023', 'dd-MM-yyyy'), 'SA_REP', 7700, 0.21, 145,
      80),
-
     (161, 'Charlotte', 'Müller', 'CMUELL2', '49.30.555.0161', TO_DATE('26-04-2020', 'dd-MM-yyyy'), 'IT_PROG', 9100,
      NULL, 74, 60),
     (162, 'Logan', 'Zhang', 'LZHANG2', '86.10.555.0162', TO_DATE('05-06-2021', 'dd-MM-yyyy'), 'DATA_ENGINEER', 17900,
@@ -1264,7 +1240,6 @@ VALUES
      NULL, 44, 800),
     (170, 'Henry', 'Liu', 'HLIU2', '86.10.555.0170', TO_DATE('15-11-2022', 'dd-MM-yyyy'), 'AI_RESEARCH', 23200, NULL,
      17, 500),
-
     (171, 'Aria', 'Fujimoto', 'AFUJIM2', '81.3.555.0171', TO_DATE('24-01-2023', 'dd-MM-yyyy'), 'CLD_ARCH', 25200, NULL,
      25, 400),
     (172, 'Jack', 'Müller', 'JMUELL2', '49.30.555.0172', TO_DATE('03-03-2020', 'dd-MM-yyyy'), 'SEC_ARCH', 26200, NULL,
@@ -1285,7 +1260,6 @@ VALUES
      NULL, 79, 2000),
     (180, 'Wyatt', 'Kovács', 'WKOVAC2', '36.1.555.0180', TO_DATE('14-08-2021', 'dd-MM-yyyy'), 'UI_DESIGNER', 14200,
      NULL, 80, 2001),
-
     (181, 'Mia', 'Scholz', 'MSCHOL2', '49.30.555.0181', TO_DATE('23-10-2022', 'dd-MM-yyyy'), 'HAPTICS_DESIGNER', 14700,
      NULL, 81, 2004),
     (182, 'James', 'Ito', 'JITO2', '81.3.555.0182', TO_DATE('01-01-2023', 'dd-MM-yyyy'), 'NEURAL_INTERFACE', 26200,
@@ -1306,7 +1280,6 @@ VALUES
      NULL, 50, 905),
     (190, 'Alexander', 'López', 'ALOPEZ2', '52.55.555.0190', TO_DATE('12-05-2020', 'dd-MM-yyyy'), 'LATAM_BEV_OPS',
      13200, NULL, 51, 904),
-
     (191, 'Scarlett', 'Weber', 'SWEBER2', '49.30.555.0191', TO_DATE('21-07-2021', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200,
      NULL, 53, 1201),
     (192, 'Henry', 'Chen', 'HCHEN2', '86.10.555.0192', TO_DATE('30-09-2022', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL,
@@ -1327,7 +1300,6 @@ VALUES
      NULL, 61, 1600),
     (200, 'Leo', 'Hassan', 'LHASS2', '966.1.555.0200', TO_DATE('10-03-2023', 'dd-MM-yyyy'), 'FIN_ANALYST', 10900, NULL,
      62, 1600),
-
     (201, 'Ava', 'Castro', 'ACASTR2', '54.11.555.0201', TO_DATE('19-05-2020', 'dd-MM-yyyy'), 'FIN_ANALYST', 10600, NULL,
      63, 1600),
     (202, 'Wyatt', 'Malik', 'WMALIK2', '92.51.555.0202', TO_DATE('28-07-2021', 'dd-MM-yyyy'), 'FIN_ANALYST', 10300,
@@ -1347,9 +1319,9 @@ VALUES
     (209, 'Harper', 'Wang', 'HWANG2', '86.10.555.0209', TO_DATE('30-09-2021', 'dd-MM-yyyy'), 'DATA_ARCH', 23200, NULL,
      71, 1803),
     (210, 'Logan', 'Romero', 'LROMER2', '57.1.555.0210', TO_DATE('08-12-2022', 'dd-MM-yyyy'), 'ML_ENGINEER', 19700,
-     NULL, 72, 1804);
+     NULL, 72, 1804),
 
--- 🌐 GLOBAL AI & RESEARCH (USA, Germany, Poland, China)
+-- GLOBAL AI & RESEARCH
 (211, 'Aiden', 'Wang', 'AWANG', '86.10.555.0211', TO_DATE('15-01-2018', 'dd-MM-yyyy'), 'AI_RESEARCH', 23500, NULL, 17, 500)
 ,
                           (212, 'Lina', 'Jansen', 'LJANSEN', '49.30.555.0212', TO_DATE('22-03-2019', 'dd-MM-yyyy'), 'AI_RESEARCH', 22800, NULL, 17, 500),
@@ -1360,7 +1332,7 @@ VALUES
                           (217, 'Karolina', 'Lewandowska', 'KLEWAN', '48.22.555.0217', TO_DATE('27-04-2020', 'dd-MM-yyyy'), 'GENAI_DEV', 23200, NULL, 17, 507),
                           (218, 'Tariq', 'Butt', 'TBUTT', '92.51.555.0218', TO_DATE('10-07-2021', 'dd-MM-yyyy'), 'AI_ETHICS', 17200, NULL, 13, 505),
 
-                          -- ☁️ CLOUD & INFRASTRUCTURE (USA, Germany)
+                          -- ☁CLOUD & INFRASTRUCTURE (USA, Germany)
                           (219, 'Dev', 'Sharma', 'DSHARMA', '1.650.555.0219', TO_DATE('23-09-2017', 'dd-MM-yyyy'), 'CLD_ARCH', 24200, NULL, 25, 400),
                           (220, 'Anika', 'Becker', 'ABECKER', '49.30.555.0220', TO_DATE('06-12-2018', 'dd-MM-yyyy'), 'DEVOPS_ENG', 19200, NULL, 25, 401),
                           (221, 'Carlos', 'Mendes', 'CMENDES2', '55.11.555.0221', TO_DATE('19-02-2019', 'dd-MM-yyyy'), 'SRE_ENG', 20200, NULL, 25, 402),
@@ -1369,7 +1341,7 @@ VALUES
                           (224, 'Lucas', 'Dubois', 'LDUBOIS', '33.1.555.0224', TO_DATE('30-09-2022', 'dd-MM-yyyy'), 'QUANTUM_RES', 32200, NULL, 30, 1300),
                           (225, 'Olivia', 'Park', 'OPARK', '82.2.555.0225', TO_DATE('13-12-2023', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 23200, NULL, 30, 1301),
 
-                          -- 💻 SOFTWARE DEVELOPMENT (Global)
+                          --  SOFTWARE DEVELOPMENT (Global)
                           (226, 'Ethan', 'Li', 'ELI', '86.10.555.0226', TO_DATE('26-02-2018', 'dd-MM-yyyy'), 'FULLSTACK_DEV', 16200, NULL, 32, 600),
                           (227, 'Lea', 'Bauer', 'LBAUER', '49.30.555.0227', TO_DATE('11-05-2019', 'dd-MM-yyyy'), 'BACKEND_DEV', 15700, NULL, 226, 601),
                           (228, 'Ji-hoon', 'Kim', 'JKIM2', '82.2.555.0228', TO_DATE('24-07-2020', 'dd-MM-yyyy'), 'FRONTEND_DEV', 14700, NULL, 226, 602),
@@ -1378,33 +1350,33 @@ VALUES
                           (231, 'Freya', 'Berg', 'FBERG', '46.8.555.0231', TO_DATE('02-03-2020', 'dd-MM-yyyy'), 'OS_DEV', 21200, NULL, 226, 605),
                           (232, 'Dariusz', 'Wiśniewski', 'DWISNI', '48.22.555.0232', TO_DATE('15-05-2021', 'dd-MM-yyyy'), 'API_ENGINEER', 18700, NULL, 226, 606),
 
-                          -- 🛡️ CYBERSECURITY (Germany, USA, Poland)
+                          --  CYBERSECURITY (Germany, USA, Poland)
                           (233, 'Marcus', 'Hayes', 'MHAYES', '1.650.555.0233', TO_DATE('28-07-2018', 'dd-MM-yyyy'), 'SEC_ANALYST', 14700, NULL, 29, 701),
                           (234, 'Clara', 'Hofmann', 'CHOFMANN', '49.30.555.0234', TO_DATE('10-10-2019', 'dd-MM-yyyy'), 'PENTESTER', 18200, NULL, 29, 702),
                           (235, 'Rafael', 'Santos', 'RSANTOS', '55.11.555.0235', TO_DATE('23-01-2020', 'dd-MM-yyyy'), 'INCIDENT_RES', 16700, NULL, 29, 703),
                           (236, 'Marta', 'Dąbrowska', 'MDABRO', '48.22.555.0236', TO_DATE('05-04-2021', 'dd-MM-yyyy'), 'SOC_ANALYST', 11700, NULL, 233, 704),
                           (237, 'Ivan', 'Ivanov', 'IIVANOV', '7.495.555.0237', TO_DATE('18-06-2022', 'dd-MM-yyyy'), 'ZERO_TRUST', 25200, NULL, 29, 705),
 
-                          -- 🚗 LATAI AUTO (Germany, USA, Poland)
+                          -- LATAI AUTO (Germany, USA, Poland)
                           (238, 'Felix', 'Schulz', 'FSCHULZ', '49.711.555.0238', TO_DATE('30-08-2016', 'dd-MM-yyyy'), 'AUTO_PILOT', 22200, NULL, 44, 800),
                           (239, 'Nina', 'Wagner', 'NWAGNER', '49.711.555.0239', TO_DATE('12-11-2017', 'dd-MM-yyyy'), 'BATTERY_SCIENTIST', 23200, NULL, 238, 801),
                           (240, 'Tomasz', 'Mazur', 'TMAZUR', '48.71.555.0240', TO_DATE('25-01-2018', 'dd-MM-yyyy'), 'VEHICLE_AI', 21200, NULL, 238, 804),
                           (241, 'Julian', 'Moretti', 'JMORET', '39.6.555.0241', TO_DATE('07-04-2019', 'dd-MM-yyyy'), 'CONNECTED_CAR', 19700, NULL, 238, 805),
 
-                          -- 🥤 LATAI BEVERAGE (Colombia, Spain, USA)
+                          -- LATAI BEVERAGE (Colombia, Spain, USA)
                           (242, 'Sofia', 'Vega', 'SVEGA', '57.1.555.0242', TO_DATE('20-06-2018', 'dd-MM-yyyy'), 'BEVERAGE_CHEMIST', 12700, NULL, 48, 901),
                           (243, 'Mateo', 'Rojas', 'MROJAS', '57.1.555.0243', TO_DATE('02-09-2019', 'dd-MM-yyyy'), 'SUSTAIN_PACKAGING', 13700, NULL, 242, 902),
                           (244, 'Elena', 'Morales', 'EMORAL', '34.91.555.0244', TO_DATE('15-11-2020', 'dd-MM-yyyy'), 'DIGI_CONSUMER', 14200, NULL, 242, 905),
                           (245, 'Diego', 'Ramírez', 'DRAMIR', '52.55.555.0245', TO_DATE('28-01-2021', 'dd-MM-yyyy'), 'LATAM_BEV_OPS', 13200, NULL, 242, 904),
 
-                          -- 🌍 REGIONAL HQs (Global)
+                          -- REGIONAL HQs (Global)
                           (246, 'Aisha', 'Al-Mansoori', 'AALMAN', '971.4.555.0246', TO_DATE('10-04-2017', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL, 52, 1200),
                           (247, 'Lukas', 'Schroeder', 'LSCHROE', '49.30.555.0247', TO_DATE('23-06-2018', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL, 53, 1201),
                           (248, 'Chen', 'Xiao', 'CXIAO', '86.10.555.0248', TO_DATE('05-09-2019', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL, 54, 1202),
                           (249, 'Javier', 'Campos', 'JCAMPOS', '34.91.555.0249', TO_DATE('18-11-2020', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL, 55, 1205),
                           (250, 'Piotr', 'Lewandowski', 'PLEWAN', '48.22.555.0250', TO_DATE('31-01-2021', 'dd-MM-yyyy'), 'LT_REG_MGR', 18200, NULL, 56, 1204),
 
-                          -- 🧑‍💼 CORPORATE FUNCTIONS
+                          -- CORPORATE FUNCTIONS
                           (251, 'Grace', 'Yang', 'GYANG', '86.10.555.0251', TO_DATE('13-04-2018', 'dd-MM-yyyy'), 'HR_BUS_PARTNER', 12200, NULL, 57, 1500),
                           (252, 'Emilia', 'Zielińska', 'EZIELI', '48.22.555.0252', TO_DATE('26-06-2019', 'dd-MM-yyyy'), 'HR_REP', 8700, NULL, 251, 1500),
                           (253, 'Ricardo', 'Ortega', 'RORTG', '57.1.555.0253', TO_DATE('08-09-2020', 'dd-MM-yyyy'), 'HR_REP', 8400, NULL, 251, 1500),
@@ -1414,12 +1386,12 @@ VALUES
                           (257, 'Mateo', 'Vargas', 'MVARGAS', '54.11.555.0257', TO_DATE('29-06-2020', 'dd-MM-yyyy'), 'FIN_ANALYST', 10700, NULL, 63, 1600),
                           (258, 'Zara', 'Ali', 'ZALI', '92.51.555.0258', TO_DATE('11-09-2021', 'dd-MM-yyyy'), 'FIN_ANALYST', 10400, NULL, 64, 1600),
 
-                          -- 🌱 SUSTAINABILITY & ETHICS
+                          -- SUSTAINABILITY & ETHICS
                           (259, 'Leo', 'Neumann', 'LNEUMA', '49.30.555.0259', TO_DATE('24-11-2017', 'dd-MM-yyyy'), 'SUSTAIN_ENG', 13700, NULL, 65, 1400),
                           (260, 'Yara', 'Khalil', 'YKHALIL', '20.2.555.0260', TO_DATE('06-02-2018', 'dd-MM-yyyy'), 'CARBON_ANALYST', 12700, NULL, 259, 1401),
                           (261, 'Filip', 'Krawczyk', 'FKRAWC', '48.22.555.0261', TO_DATE('19-04-2019', 'dd-MM-yyyy'), 'CIRCULAR_DESIGN', 14200, NULL, 259, 1404),
 
-                          -- 🧪 RESEARCH CAMPUSES
+                          -- RESEARCH CAMPUSES
                           (262, 'Arun', 'Mehta', 'AMEHTA', '91.80.555.0262', TO_DATE('01-07-2016', 'dd-MM-yyyy'), 'QUANTUM_RES', 30200, NULL, 68, 1800),
                           (263, 'Sven', 'Bergman', 'SBERGM', '46.8.555.0263', TO_DATE('14-09-2017', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 22200, NULL, 69, 1801),
                           (264, 'Agata', 'Mazur', 'AMAZUR', '48.22.555.0264', TO_DATE('27-11-2018', 'dd-MM-yyyy'), 'AI_RESEARCH', 22700, NULL, 70, 1802),
@@ -1427,21 +1399,21 @@ VALUES
                           (266, 'Andrés', 'Pérez', 'APEREZ', '57.1.555.0266', TO_DATE('22-04-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 19700, NULL, 72, 1804),
                           (267, 'Marta', 'Sánchez', 'MSANCHE', '34.91.555.0267', TO_DATE('05-07-2021', 'dd-MM-yyyy'), 'NLP_ENGINEER', 20200, NULL, 73, 1805),
 
-                          -- 🖥️ IT SUPPORT & INTERNAL TOOLS
+                          --  IT SUPPORT & INTERNAL TOOLS
                           (268, 'David', 'Silva', 'DSILVA4', '57.1.555.0268', TO_DATE('18-09-2018', 'dd-MM-yyyy'), 'IT_PROG', 9700, NULL, 74, 1900),
                           (269, 'Anna', 'Tóth', 'ATOTH', '36.1.555.0269', TO_DATE('31-11-2019', 'dd-MM-yyyy'), 'IT_PROG', 9200, NULL, 268, 1900),
                           (270, 'Sam', 'Adeyemi', 'SADEYE', '234.1.555.0270', TO_DATE('13-02-2020', 'dd-MM-yyyy'), 'IT_PROG', 8700, NULL, 268, 1900),
                           (271, 'Lena', 'Christensen', 'LCHRIS', '45.3.555.0271', TO_DATE('26-04-2021', 'dd-MM-yyyy'), 'IT_PROG', 8400, NULL, 268, 1900),
                           (272, 'Carlos', 'Ferreira', 'CFERRE', '55.11.555.0272', TO_DATE('09-07-2022', 'dd-MM-yyyy'), 'IT_PROG', 8200, NULL, 268, 1900),
 
-                          -- 🌐 DIGITAL EXPERIENCE & METAWORLD
+                          -- DIGITAL EXPERIENCE & METAWORLD
                           (273, 'Maya', 'Shah', 'MSHAH', '1.650.555.0273', TO_DATE('22-09-2019', 'dd-MM-yyyy'), 'UX_RESEARCHER', 16200, NULL, 79, 2000),
                           (274, 'Leon', 'Fischer', 'LFISCH', '49.30.555.0274', TO_DATE('05-12-2020', 'dd-MM-yyyy'), 'UI_DESIGNER', 14200, NULL, 273, 2001),
                           (275, 'Zoe', 'Castillo', 'ZCASTI', '34.91.555.0275', TO_DATE('18-02-2021', 'dd-MM-yyyy'), 'HAPTICS_DESIGNER', 14700, NULL, 273, 2004),
                           (276, 'Kenji', 'Kobayashi', 'KKOBAY', '81.3.555.0276', TO_DATE('03-05-2022', 'dd-MM-yyyy'), 'NEURAL_INTERFACE', 26200, NULL, 82, 1002),
                           (277, 'Nadia', 'Abdelrahman', 'NABDEL', '20.2.555.0277', TO_DATE('16-07-2023', 'dd-MM-yyyy'), 'IMMERSIVE_PROD', 18200, NULL, 273, 2002),
 
-                          -- 🌍 GLOBAL DISTRIBUTION (More regional specialists)
+                          -- GLOBAL DISTRIBUTION (More regional specialists)
                           (278, 'Julia', 'Lima', 'JLIMA', '55.11.555.0278', TO_DATE('29-09-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 20200, NULL, 19, 501),
                           (279, 'Tom', 'Reed', 'TREED', '1.650.555.0279', TO_DATE('11-12-2021', 'dd-MM-yyyy'), 'CLD_ARCH', 25200, NULL, 25, 400),
                           (280, 'Sara', 'Berglund', 'SBERGL', '46.8.555.0280', TO_DATE('24-02-2022', 'dd-MM-yyyy'), 'SRE_ENG', 21200, NULL, 27, 402),
@@ -1458,8 +1430,6 @@ VALUES
                           (291, 'Matej', 'Horvath', 'MHORVA', '420.2.555.0291', TO_DATE('15-05-2021', 'dd-MM-yyyy'), 'OS_DEV', 21700, NULL, 37, 605),
                           (292, 'Clara', 'Ferreira', 'CFERRE2', '55.11.555.0292', TO_DATE('28-07-2022', 'dd-MM-yyyy'), 'API_ENGINEER', 19200, NULL, 38, 606),
                           (293, 'Leonardo', 'Conti', 'LCONTI', '39.6.555.0293', TO_DATE('10-10-2023', 'dd-MM-yyyy'), 'DATA_SCIENTIST', 20200, NULL, 20, 506),
-
-                          -- Continue with diverse global roles (294–410)
                           (294, 'Anya', 'Smirnova', 'ASMIRN', '7.495.555.0294', TO_DATE('23-01-2019', 'dd-MM-yyyy'), 'AI_RESEARCH', 24200, NULL, 17, 500),
                           (295, 'Eli', 'Levi', 'ELEVI', '972.2.555.0295', TO_DATE('05-04-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 21200, NULL, 19, 501),
                           (296, 'Frederik', 'Olsen', 'FOLSEN', '45.3.555.0296', TO_DATE('18-06-2021', 'dd-MM-yyyy'), 'CLD_ARCH', 25700, NULL, 25, 400),
@@ -1487,7 +1457,6 @@ VALUES
                           (318, 'Olivia', 'Meyer', 'OMEYER3', '45.3.555.0318', TO_DATE('25-10-2022', 'dd-MM-yyyy'), 'ST_CLERK', 3450, NULL, 120, 50),
                           (319, 'William', 'Kim', 'WKIM3', '82.2.555.0319', TO_DATE('07-01-2023', 'dd-MM-yyyy'), 'SH_CLERK', 3250, NULL, 121, 50),
                           (320, 'Isabella', 'Costa', 'ICOSTA4', '55.11.555.0320', TO_DATE('20-03-2020', 'dd-MM-yyyy'), 'PU_CLERK', 2920, NULL, 317, 30),
-
                           (321, 'Lucas', 'Ferreira', 'LFERRE3', '55.11.555.0321', TO_DATE('02-06-2021', 'dd-MM-yyyy'), 'AC_ACCOUNT', 8600, NULL, 316, 110),
                           (322, 'Amelia', 'Nguyen', 'ANUYEN3', '84.4.555.0322', TO_DATE('15-08-2022', 'dd-MM-yyyy'), 'MK_REP', 8900, NULL, 201, 20),
                           (323, 'James', 'Clark', 'JCLARK3', '1.415.555.0323', TO_DATE('28-10-2023', 'dd-MM-yyyy'), 'SA_REP', 7400, 0.17, 145, 80),
@@ -1508,7 +1477,6 @@ VALUES
                           (338, 'Mateo', 'Rios', 'MRIOS3', '56.2.555.0338', TO_DATE('06-11-2023', 'dd-MM-yyyy'), 'SA_REP', 7600, 0.19, 147, 80),
                           (339, 'Freya', 'Lund', 'FLUND3', '47.2.555.0339', TO_DATE('19-01-2021', 'dd-MM-yyyy'), 'ST_CLERK', 3600, NULL, 120, 50),
                           (340, 'Kenzo', 'Suzuki', 'KSUZU3', '81.3.555.0340', TO_DATE('01-04-2022', 'dd-MM-yyyy'), 'IT_PROG', 9200, NULL, 74, 60),
-
                           (341, 'Isabela', 'Costa', 'ICOSTA5', '55.11.555.0341', TO_DATE('14-06-2023', 'dd-MM-yyyy'), 'MK_REP', 9000, NULL, 201, 20),
                           (342, 'Lucas', 'Müller', 'LMUELL3', '49.30.555.0342', TO_DATE('27-08-2020', 'dd-MM-yyyy'), 'SA_REP', 7700, 0.20, 148, 80),
                           (343, 'Mia', 'Andersen', 'MANDER3', '45.3.555.0343', TO_DATE('09-11-2021', 'dd-MM-yyyy'), 'SH_CLERK', 3350, NULL, 121, 50),
@@ -1578,11 +1546,10 @@ VALUES
                           (407, 'Scarlett', 'Becker', 'SBECK3', '49.30.555.0407', TO_DATE('03-10-2021', 'dd-MM-yyyy'), 'ST_CLERK', 3800, NULL, 120, 50),
                           (408, 'Henry', 'Zhang', 'HZHANG3', '86.10.555.0408', TO_DATE('16-12-2022', 'dd-MM-yyyy'), 'SH_CLERK', 3450, NULL, 121, 50),
                           (409, 'Aria', 'Kim', 'AKIM4', '82.2.555.0409', TO_DATE('29-02-2023', 'dd-MM-yyyy'), 'FI_ACCOUNT', 8900, NULL, 108, 100),
-                          (410, 'Jack', 'Liu', 'JLIU', '86.10.555.0410', TO_DATE('11-05-2020', 'dd-MM-yyyy'), 'HR_REP', 8900, NULL, 251, 40);
+                          (410, 'Jack', 'Liu', 'JLIU', '86.10.555.0410', TO_DATE('11-05-2020', 'dd-MM-yyyy'), 'HR_REP', 8900, NULL, 251, 40),
 
--- 🌐 AI & MACHINE LEARNING (Global Hubs)
-(411, 'Nina', 'Schmidt', 'NSCHMIDT', '49.30.555.0411', TO_DATE('15-03-2018', 'dd-MM-yyyy'), 'AI_RESEARCH', 23800, NULL, 17, 500)
-,
+-- AI & MACHINE LEARNING (Global Hubs)
+                          (411, 'Nina', 'Schmidt', 'NSCHMIDT', '49.30.555.0411', TO_DATE('15-03-2018', 'dd-MM-yyyy'), 'AI_RESEARCH', 23800, NULL, 17, 500),
                           (412, 'Wei', 'Xu', 'WXU', '86.10.555.0412', TO_DATE('22-06-2019', 'dd-MM-yyyy'), 'AI_RESEARCH', 23000, NULL, 17, 500),
                           (413, 'Mateusz', 'Piotrowski', 'MPIOTR', '48.22.555.0413', TO_DATE('05-09-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 20400, NULL, 19, 501),
                           (414, 'Lina', 'Zhou', 'LZHOU', '86.10.555.0414', TO_DATE('18-11-2021', 'dd-MM-yyyy'), 'DL_SPECIAL', 21900, NULL, 17, 502),
@@ -1591,7 +1558,7 @@ VALUES
                           (417, 'Karolina', 'Jankowska', 'KJANK', '48.22.555.0417', TO_DATE('27-06-2020', 'dd-MM-yyyy'), 'GENAI_DEV', 23400, NULL, 17, 507),
                           (418, 'Tariq', 'Rahman', 'TRAHMAN', '880.2.555.0418', TO_DATE('10-08-2021', 'dd-MM-yyyy'), 'AI_ETHICS', 17400, NULL, 13, 505),
 
-                          -- ☁️ CLOUD & INFRASTRUCTURE
+                          --  CLOUD & INFRASTRUCTURE
                           (419, 'Dev', 'Kapoor', 'DKAPOOR', '91.80.555.0419', TO_DATE('23-10-2017', 'dd-MM-yyyy'), 'CLD_ARCH', 24400, NULL, 25, 400),
                           (420, 'Anika', 'Fischer', 'AFISCHER', '49.30.555.0420', TO_DATE('06-01-2018', 'dd-MM-yyyy'), 'DEVOPS_ENG', 19400, NULL, 25, 401),
                           (421, 'Carlos', 'Oliveira', 'COLIVE', '55.11.555.0421', TO_DATE('19-03-2019', 'dd-MM-yyyy'), 'SRE_ENG', 20400, NULL, 25, 402),
@@ -1600,7 +1567,7 @@ VALUES
                           (424, 'Lucas', 'Morel', 'LMOREL', '33.1.555.0424', TO_DATE('28-10-2022', 'dd-MM-yyyy'), 'QUANTUM_RES', 32400, NULL, 30, 1300),
                           (425, 'Olivia', 'Choi', 'OCHOI', '82.2.555.0425', TO_DATE('10-01-2023', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 23400, NULL, 30, 1301),
 
-                          -- 💻 SOFTWARE DEVELOPMENT
+                          -- SOFTWARE DEVELOPMENT
                           (426, 'Ethan', 'Wu', 'WWU', '86.10.555.0426', TO_DATE('23-03-2018', 'dd-MM-yyyy'), 'FULLSTACK_DEV', 16400, NULL, 32, 600),
                           (427, 'Lea', 'Lang', 'LLANG', '49.30.555.0427', TO_DATE('05-06-2019', 'dd-MM-yyyy'), 'BACKEND_DEV', 15900, NULL, 426, 601),
                           (428, 'Ji-hoon', 'Lee', 'JLEE4', '82.2.555.0428', TO_DATE('18-08-2020', 'dd-MM-yyyy'), 'FRONTEND_DEV', 14900, NULL, 426, 602),
@@ -1609,33 +1576,33 @@ VALUES
                           (431, 'Freya', 'Nilsson', 'FNILSS', '46.8.555.0431', TO_DATE('26-03-2023', 'dd-MM-yyyy'), 'OS_DEV', 21400, NULL, 426, 605),
                           (432, 'Dariusz', 'Szczepański', 'DSZCZE', '48.22.555.0432', TO_DATE('08-06-2020', 'dd-MM-yyyy'), 'API_ENGINEER', 18900, NULL, 426, 606),
 
-                          -- 🛡️ CYBERSECURITY
+                          -- ️ CYBERSECURITY
                           (433, 'Marcus', 'King', 'MKING2', '1.650.555.0433', TO_DATE('21-08-2018', 'dd-MM-yyyy'), 'SEC_ANALYST', 14900, NULL, 29, 701),
                           (434, 'Clara', 'Schuster', 'CSCHUS', '49.30.555.0434', TO_DATE('03-11-2019', 'dd-MM-yyyy'), 'PENTESTER', 18400, NULL, 29, 702),
                           (435, 'Rafael', 'Almeida', 'RALMEI', '55.11.555.0435', TO_DATE('16-01-2020', 'dd-MM-yyyy'), 'INCIDENT_RES', 16900, NULL, 29, 703),
                           (436, 'Marta', 'Kamińska', 'MKAMIN', '48.22.555.0436', TO_DATE('29-03-2021', 'dd-MM-yyyy'), 'SOC_ANALYST', 11900, NULL, 433, 704),
                           (437, 'Ivan', 'Dimitrov', 'IDIMIT', '359.2.555.0437', TO_DATE('11-06-2022', 'dd-MM-yyyy'), 'ZERO_TRUST', 25400, NULL, 29, 705),
 
-                          -- 🚗 LATAI AUTO
+                          --  LATAI AUTO
                           (438, 'Felix', 'Walter', 'FWALTER', '49.711.555.0438', TO_DATE('24-08-2016', 'dd-MM-yyyy'), 'AUTO_PILOT', 22400, NULL, 44, 800),
                           (439, 'Nina', 'Becker', 'NBECK', '49.711.555.0439', TO_DATE('06-11-2017', 'dd-MM-yyyy'), 'BATTERY_SCIENTIST', 23400, NULL, 438, 801),
                           (440, 'Tomasz', 'Zawadzki', 'TZAWAD', '48.71.555.0440', TO_DATE('19-01-2018', 'dd-MM-yyyy'), 'VEHICLE_AI', 21400, NULL, 438, 804),
                           (441, 'Julian', 'Ferrari', 'JFERRA', '39.6.555.0441', TO_DATE('01-04-2019', 'dd-MM-yyyy'), 'CONNECTED_CAR', 19900, NULL, 438, 805),
 
-                          -- 🥤 LATAI BEVERAGE
+                          --  LATAI BEVERAGE
                           (442, 'Sofia', 'Duarte', 'SDUARTE', '57.1.555.0442', TO_DATE('14-06-2018', 'dd-MM-yyyy'), 'BEVERAGE_CHEMIST', 12900, NULL, 48, 901),
                           (443, 'Mateo', 'Silva', 'MSILVA2', '57.1.555.0443', TO_DATE('27-08-2019', 'dd-MM-yyyy'), 'SUSTAIN_PACKAGING', 13900, NULL, 442, 902),
                           (444, 'Elena', 'Ramos', 'ERAMOS', '34.91.555.0444', TO_DATE('09-11-2020', 'dd-MM-yyyy'), 'DIGI_CONSUMER', 14400, NULL, 442, 905),
                           (445, 'Diego', 'Molina', 'DMOLIN', '52.55.555.0445', TO_DATE('22-01-2021', 'dd-MM-yyyy'), 'LATAM_BEV_OPS', 13400, NULL, 442, 904),
 
-                          -- 🌍 REGIONAL HQs
+                          --  REGIONAL HQs
                           (446, 'Aisha', 'Khalifa', 'AKHALIF', '971.4.555.0446', TO_DATE('04-04-2017', 'dd-MM-yyyy'), 'LT_REG_MGR', 18400, NULL, 52, 1200),
                           (447, 'Lukas', 'Wolff', 'LWOLFF', '49.30.555.0447', TO_DATE('17-06-2018', 'dd-MM-yyyy'), 'LT_REG_MGR', 18400, NULL, 53, 1201),
                           (448, 'Chen', 'Yan', 'CYAN', '86.10.555.0448', TO_DATE('30-08-2019', 'dd-MM-yyyy'), 'LT_REG_MGR', 18400, NULL, 54, 1202),
                           (449, 'Javier', 'Núñez', 'JNUNEZ', '34.91.555.0449', TO_DATE('12-11-2020', 'dd-MM-yyyy'), 'LT_REG_MGR', 18400, NULL, 55, 1205),
                           (450, 'Piotr', 'Jabłoński', 'PJABLO', '48.22.555.0450', TO_DATE('25-01-2021', 'dd-MM-yyyy'), 'LT_REG_MGR', 18400, NULL, 56, 1204),
 
-                          -- 🧑‍💼 CORPORATE FUNCTIONS
+                          --  CORPORATE FUNCTIONS
                           (451, 'Grace', 'Sun', 'GSUN', '86.10.555.0451', TO_DATE('07-04-2018', 'dd-MM-yyyy'), 'HR_BUS_PARTNER', 12400, NULL, 57, 1500),
                           (452, 'Emilia', 'Wójcik', 'EWÓJC', '48.22.555.0452', TO_DATE('20-06-2019', 'dd-MM-yyyy'), 'HR_REP', 8900, NULL, 451, 1500),
                           (453, 'Ricardo', 'Méndez', 'RMENDE', '57.1.555.0453', TO_DATE('02-09-2020', 'dd-MM-yyyy'), 'HR_REP', 8600, NULL, 451, 1500),
@@ -1645,12 +1612,12 @@ VALUES
                           (457, 'Mateo', 'Rojas', 'MROJAS2', '54.11.555.0457', TO_DATE('23-06-2020', 'dd-MM-yyyy'), 'FIN_ANALYST', 10900, NULL, 63, 1600),
                           (458, 'Zara', 'Hussain', 'ZHUSAI', '92.51.555.0458', TO_DATE('05-09-2021', 'dd-MM-yyyy'), 'FIN_ANALYST', 10600, NULL, 64, 1600),
 
-                          -- 🌱 SUSTAINABILITY & ETHICS
+                          -- SUSTAINABILITY & ETHICS
                           (459, 'Leo', 'Krüger', 'LKRUG', '49.30.555.0459', TO_DATE('18-11-2017', 'dd-MM-yyyy'), 'SUSTAIN_ENG', 13900, NULL, 65, 1400),
                           (460, 'Yara', 'Fadel', 'YFADEL', '20.2.555.0460', TO_DATE('31-01-2018', 'dd-MM-yyyy'), 'CARBON_ANALYST', 12900, NULL, 459, 1401),
                           (461, 'Filip', 'Jaworski', 'FJAWOR', '48.22.555.0461', TO_DATE('13-04-2019', 'dd-MM-yyyy'), 'CIRCULAR_DESIGN', 14400, NULL, 459, 1404),
 
-                          -- 🧪 RESEARCH CAMPUSES
+                          -- RESEARCH CAMPUSES
                           (462, 'Arun', 'Gupta', 'AGUPTA', '91.80.555.0462', TO_DATE('26-06-2016', 'dd-MM-yyyy'), 'QUANTUM_RES', 30400, NULL, 68, 1800),
                           (463, 'Sven', 'Andersson', 'SANDER', '46.8.555.0463', TO_DATE('08-09-2017', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 22400, NULL, 69, 1801),
                           (464, 'Agata', 'Kozłowska', 'AKOZLO', '48.22.555.0464', TO_DATE('21-11-2018', 'dd-MM-yyyy'), 'AI_RESEARCH', 22900, NULL, 70, 1802),
@@ -1658,21 +1625,21 @@ VALUES
                           (466, 'Andrés', 'Guerrero', 'AGUERR', '57.1.555.0466', TO_DATE('16-04-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 19900, NULL, 72, 1804),
                           (467, 'Marta', 'Iglesias', 'MIGLE2', '34.91.555.0467', TO_DATE('29-06-2021', 'dd-MM-yyyy'), 'NLP_ENGINEER', 20400, NULL, 73, 1805),
 
-                          -- 🖥️ IT SUPPORT & TOOLS
+                          -- IT SUPPORT & TOOLS
                           (468, 'David', 'Costa', 'DCOSTA', '57.1.555.0468', TO_DATE('11-09-2018', 'dd-MM-yyyy'), 'IT_PROG', 9900, NULL, 74, 1900),
                           (469, 'Anna', 'Nagy', 'ANAGY', '36.1.555.0469', TO_DATE('24-11-2019', 'dd-MM-yyyy'), 'IT_PROG', 9400, NULL, 468, 1900),
                           (470, 'Sam', 'Ojo', 'SOJO', '234.1.555.0470', TO_DATE('06-02-2020', 'dd-MM-yyyy'), 'IT_PROG', 8900, NULL, 468, 1900),
                           (471, 'Lena', 'Sørensen', 'LSOREN', '45.3.555.0471', TO_DATE('19-04-2021', 'dd-MM-yyyy'), 'IT_PROG', 8600, NULL, 468, 1900),
                           (472, 'Carlos', 'Castro', 'CCAstr', '55.11.555.0472', TO_DATE('01-07-2022', 'dd-MM-yyyy'), 'IT_PROG', 8400, NULL, 468, 1900),
 
-                          -- 🌐 DIGITAL EXPERIENCE
+                          -- DIGITAL EXPERIENCE
                           (473, 'Maya', 'Mehta', 'MMEHTA', '1.650.555.0473', TO_DATE('14-09-2019', 'dd-MM-yyyy'), 'UX_RESEARCHER', 16400, NULL, 79, 2000),
                           (474, 'Leon', 'Schulze', 'LSCHUL3', '49.30.555.0474', TO_DATE('27-11-2020', 'dd-MM-yyyy'), 'UI_DESIGNER', 14400, NULL, 473, 2001),
                           (475, 'Zoe', 'Ortega', 'ZORTEG', '34.91.555.0475', TO_DATE('09-02-2021', 'dd-MM-yyyy'), 'HAPTICS_DESIGNER', 14900, NULL, 473, 2004),
                           (476, 'Kenji', 'Saito', 'KSAITO', '81.3.555.0476', TO_DATE('22-04-2022', 'dd-MM-yyyy'), 'NEURAL_INTERFACE', 26400, NULL, 82, 1002),
                           (477, 'Nadia', 'Abdullah', 'NABDUL', '971.4.555.0477', TO_DATE('04-07-2023', 'dd-MM-yyyy'), 'IMMERSIVE_PROD', 18400, NULL, 473, 2002),
 
-                          -- 🌍 GLOBAL DISTRIBUTION
+                          -- GLOBAL DISTRIBUTION
                           (478, 'Julia', 'Almeida', 'JALMEI', '55.11.555.0478', TO_DATE('17-09-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 20400, NULL, 19, 501),
                           (479, 'Tom', 'Bell', 'TBELL', '1.650.555.0479', TO_DATE('30-11-2021', 'dd-MM-yyyy'), 'CLD_ARCH', 25400, NULL, 25, 400),
                           (480, 'Sara', 'Lindberg', 'SLINDB', '46.8.555.0480', TO_DATE('12-02-2022', 'dd-MM-yyyy'), 'SRE_ENG', 21400, NULL, 27, 402),
@@ -1690,7 +1657,6 @@ VALUES
                           (492, 'Clara', 'Mendes', 'CMENDE2', '55.11.555.0492', TO_DATE('13-08-2021', 'dd-MM-yyyy'), 'API_ENGINEER', 19400, NULL, 38, 606),
                           (493, 'Leonardo', 'Barbosa', 'LBARBO', '39.6.555.0493', TO_DATE('26-10-2022', 'dd-MM-yyyy'), 'DATA_SCIENTIST', 20400, NULL, 20, 506),
 
-                          -- Continue filling roles (494–600)
                           (494, 'Anya', 'Lebedeva', 'ALEBED', '7.495.555.0494', TO_DATE('08-01-2019', 'dd-MM-yyyy'), 'AI_RESEARCH', 24400, NULL, 17, 500),
                           (495, 'Eli', 'Cohen', 'ECOHEN2', '972.2.555.0495', TO_DATE('21-03-2020', 'dd-MM-yyyy'), 'ML_ENGINEER', 21400, NULL, 19, 501),
                           (496, 'Frederik', 'Møller', 'FMOLL', '45.3.555.0496', TO_DATE('03-06-2021', 'dd-MM-yyyy'), 'CLD_ARCH', 25900, NULL, 25, 400),
@@ -1801,246 +1767,243 @@ VALUES
 
 
 
-INSERT INTO job_history
-VALUES
-    -- 🔄 Steven King (CEO track)
+INSERT INTO job_history (employee_id, start_date, end_date, job_id, department_id)
+    -- Steven King (CEO track)
     (10, TO_DATE('15-03-2008', 'dd-MM-yyyy'), TO_DATE('14-03-2012', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (10, TO_DATE('15-03-2012', 'dd-MM-yyyy'), TO_DATE('14-03-2015', 'dd-MM-yyyy'), 'IT_MGR', 60),
     (10, TO_DATE('15-03-2015', 'dd-MM-yyyy'), TO_DATE('14-03-2018', 'dd-MM-yyyy'), 'AD_VP', 301),
     (10, TO_DATE('15-03-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CTO', 300),
 
-    -- 🔄 Klaus Hofmann (CIO path)
+    -- Klaus Hofmann (CIO path)
     (11, TO_DATE('20-05-2009', 'dd-MM-yyyy'), TO_DATE('19-05-2013', 'dd-MM-yyyy'), 'FI_ACCOUNT', 100),
     (11, TO_DATE('20-05-2013', 'dd-MM-yyyy'), TO_DATE('19-05-2016', 'dd-MM-yyyy'), 'FI_MGR', 100),
     (11, TO_DATE('20-05-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CIO', 301),
 
-    -- 🔄 Mei Zhang (Data → CDO)
+    -- Mei Zhang (Data → CDO)
     (12, TO_DATE('10-07-2010', 'dd-MM-yyyy'), TO_DATE('09-07-2014', 'dd-MM-yyyy'), 'DATA_ENGINEER', 506),
     (12, TO_DATE('10-07-2014', 'dd-MM-yyyy'), TO_DATE('09-07-2017', 'dd-MM-yyyy'), 'DATA_ARCH', 506),
     (12, TO_DATE('10-07-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CDO', 302),
 
-    -- 🔄 Amara Nkosi (AI Research → CTO)
+    -- Amara Nkosi (AI Research → CTO)
     (13, TO_DATE('05-09-2011', 'dd-MM-yyyy'), TO_DATE('04-09-2015', 'dd-MM-yyyy'), 'AI_RESEARCH', 500),
     (13, TO_DATE('05-09-2015', 'dd-MM-yyyy'), TO_DATE('04-09-2018', 'dd-MM-yyyy'), 'AI_MGR', 500),
     (13, TO_DATE('05-09-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CAO', 303),
 
-    -- 🔄 Lars Pettersson (Security path)
+    -- Lars Pettersson (Security path)
     (14, TO_DATE('12-11-2012', 'dd-MM-yyyy'), TO_DATE('11-11-2016', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
     (14, TO_DATE('12-11-2016', 'dd-MM-yyyy'), TO_DATE('11-11-2019', 'dd-MM-yyyy'), 'SEC_ARCH', 700),
     (14, TO_DATE('12-11-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CSO', 304),
 
-    -- 🔄 Diego Mendoza (Product → CPO)
+    -- Diego Mendoza (Product → CPO)
     (15, TO_DATE('08-01-2013', 'dd-MM-yyyy'), TO_DATE('07-01-2017', 'dd-MM-yyyy'), 'MK_REP', 20),
     (15, TO_DATE('08-01-2017', 'dd-MM-yyyy'), TO_DATE('07-01-2020', 'dd-MM-yyyy'), 'MK_MGR', 20),
     (15, TO_DATE('08-01-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CPO', 305),
 
-    -- 🔄 Sophie Dubois (Legal path)
+    -- Sophie Dubois (Legal path)
     (16, TO_DATE('22-02-2014', 'dd-MM-yyyy'), TO_DATE('21-02-2018', 'dd-MM-yyyy'), 'HR_REP', 1500),
     (16, TO_DATE('22-02-2018', 'dd-MM-yyyy'), TO_DATE('21-02-2021', 'dd-MM-yyyy'), 'HR_MGR', 1500),
     (16, TO_DATE('22-02-2021', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_CLO', 306),
 
-    -- 🔄 Aiden Chen (AI Researcher → Lead)
+    --  Aiden Chen (AI Researcher → Lead)
     (17, TO_DATE('10-06-2011', 'dd-MM-yyyy'), TO_DATE('09-06-2015', 'dd-MM-yyyy'), 'AI_RESEARCH', 500),
     (17, TO_DATE('10-06-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'AI_MGR', 500),
 
-    -- 🔄 Lina Schmidt (AI → Quantum)
+    --  Lina Schmidt (AI → Quantum)
     (18, TO_DATE('14-08-2012', 'dd-MM-yyyy'), TO_DATE('13-08-2016', 'dd-MM-yyyy'), 'AI_RESEARCH', 500),
     (18, TO_DATE('14-08-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'QUANTUM_RES', 1300),
 
-    -- 🔄 Mateusz Nowak (Dev → ML)
+    --  Mateusz Nowak (Dev → ML)
     (19, TO_DATE('03-03-2013', 'dd-MM-yyyy'), TO_DATE('02-03-2017', 'dd-MM-yyyy'), 'FULLSTACK_DEV', 600),
     (19, TO_DATE('03-03-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'ML_ENGINEER', 501),
 
-    -- 🔄 Wei Liu (Deep Learning path)
+    --  Wei Liu (Deep Learning path)
     (20, TO_DATE('18-05-2014', 'dd-MM-yyyy'), TO_DATE('17-05-2018', 'dd-MM-yyyy'), 'ML_ENGINEER', 501),
     (20, TO_DATE('18-05-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'DL_SPECIAL', 502),
 
-    -- 🔄 Isabel Fernández (NLP growth)
+    --  Isabel Fernández (NLP growth)
     (21, TO_DATE('27-07-2015', 'dd-MM-yyyy'), TO_DATE('26-07-2019', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (21, TO_DATE('27-07-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'NLP_ENGINEER', 503),
 
-    -- 🔄 Jonas Becker (CV Engineer)
+    --  Jonas Becker (CV Engineer)
     (22, TO_DATE('09-09-2016', 'dd-MM-yyyy'), TO_DATE('08-09-2020', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (22, TO_DATE('09-09-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'CV_ENGINEER', 504),
 
-    -- 🔄 Karolina Wiśniewska (GenAI)
+    --  Karolina Wiśniewska (GenAI)
     (23, TO_DATE('15-11-2017', 'dd-MM-yyyy'), TO_DATE('14-11-2021', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (23, TO_DATE('15-11-2021', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'GENAI_DEV', 507),
 
-    -- 🔄 Tariq Khan (Ethics path)
+    -- Tariq Khan (Ethics path)
     (24, TO_DATE('22-01-2018', 'dd-MM-yyyy'), TO_DATE('21-01-2022', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (24, TO_DATE('22-01-2022', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'AI_ETHICS', 505),
 
-    -- 🔄 Dev Patel (Cloud Architect)
+    --  Dev Patel (Cloud Architect)
     (25, TO_DATE('05-04-2010', 'dd-MM-yyyy'), TO_DATE('04-04-2014', 'dd-MM-yyyy'), 'BACKEND_DEV', 601),
     (25, TO_DATE('05-04-2014', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'CLD_ARCH', 400),
 
-    -- 🔄 Anika Müller (DevOps)
+    -- Anika Müller (DevOps)
     (26, TO_DATE('12-06-2011', 'dd-MM-yyyy'), TO_DATE('11-06-2015', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (26, TO_DATE('12-06-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'DEVOPS_ENG', 401),
 
-    -- 🔄 Carlos Ruiz (SRE)
+    -- Carlos Ruiz (SRE)
     (27, TO_DATE('19-08-2012', 'dd-MM-yyyy'), TO_DATE('18-08-2016', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (27, TO_DATE('19-08-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SRE_ENG', 402),
 
-    -- 🔄 Yuto Sato (Network)
+    -- Yuto Sato (Network)
     (28, TO_DATE('26-10-2013', 'dd-MM-yyyy'), TO_DATE('25-10-2017', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (28, TO_DATE('26-10-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'NET_ENG', 403),
 
-    -- 🔄 Zeynep Yılmaz (Security)
+    -- Zeynep Yılmaz (Security)
     (29, TO_DATE('02-12-2014', 'dd-MM-yyyy'), TO_DATE('01-12-2018', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
     (29, TO_DATE('02-12-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SEC_ARCH', 700),
 
-    -- 🔄 Lucas Moreau (Quantum)
+    -- Lucas Moreau (Quantum)
     (30, TO_DATE('10-02-2015', 'dd-MM-yyyy'), TO_DATE('09-02-2019', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 1301),
     (30, TO_DATE('10-02-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'QUANTUM_RES', 1300),
 
-    -- 🔄 Olivia Kim (Photonics)
+    -- Olivia Kim (Photonics)
     (31, TO_DATE('18-04-2016', 'dd-MM-yyyy'), TO_DATE('17-04-2020', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (31, TO_DATE('18-04-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'PHOTONIC_ENG', 1301),
 
-    -- 🔄 Ethan Ng (Full-Stack → Lead)
+    -- Ethan Ng (Full-Stack → Lead)
     (32, TO_DATE('01-07-2011', 'dd-MM-yyyy'), TO_DATE('30-06-2015', 'dd-MM-yyyy'), 'FRONTEND_DEV', 602),
     (32, TO_DATE('01-07-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FULLSTACK_DEV', 600),
 
-    -- 🔄 Lea Schulz (Backend Dev)
+    -- Lea Schulz (Backend Dev)
     (33, TO_DATE('09-09-2012', 'dd-MM-yyyy'), TO_DATE('08-09-2016', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (33, TO_DATE('09-09-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'BACKEND_DEV', 601),
 
-    -- 🔄 Ji-hoon Park (Frontend)
+    -- Ji-hoon Park (Frontend)
     (34, TO_DATE('17-11-2013', 'dd-MM-yyyy'), TO_DATE('16-11-2017', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (34, TO_DATE('17-11-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FRONTEND_DEV', 602),
 
-    -- 🔄 Camila Silva (Mobile)
+    -- Camila Silva (Mobile)
     (35, TO_DATE('25-01-2014', 'dd-MM-yyyy'), TO_DATE('24-01-2018', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (35, TO_DATE('25-01-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'MOBILE_DEV', 603),
 
-    -- 🔄 Omar Al-Farsi (Embedded)
+    -- Omar Al-Farsi (Embedded)
     (36, TO_DATE('03-04-2015', 'dd-MM-yyyy'), TO_DATE('02-04-2019', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (36, TO_DATE('03-04-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'EMBEDDED_DEV', 604),
 
-    -- 🔄 Freya Andersson (OS Dev)
+    -- Freya Andersson (OS Dev)
     (37, TO_DATE('11-06-2016', 'dd-MM-yyyy'), TO_DATE('10-06-2020', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (37, TO_DATE('11-06-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'OS_DEV', 605),
 
-    -- 🔄 Dariusz Kowalski (API Engineer)
+    -- Dariusz Kowalski (API Engineer)
     (38, TO_DATE('19-08-2017', 'dd-MM-yyyy'), TO_DATE('18-08-2021', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (38, TO_DATE('19-08-2021', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'API_ENGINEER', 606),
 
-    -- 🔄 Marcus Reed (Security Analyst → Pentester)
+    --  Marcus Reed (Security Analyst → Pentester)
     (39, TO_DATE('02-10-2014', 'dd-MM-yyyy'), TO_DATE('01-10-2018', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (39, TO_DATE('02-10-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
 
-    -- 🔄 Clara Meier (Pentester)
+    --  Clara Meier (Pentester)
     (40, TO_DATE('10-12-2015', 'dd-MM-yyyy'), TO_DATE('09-12-2019', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
     (40, TO_DATE('10-12-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'PENTESTER', 702),
 
-    -- 🔄 Rafael Ortiz (Incident Response)
+    --  Rafael Ortiz (Incident Response)
     (41, TO_DATE('18-02-2016', 'dd-MM-yyyy'), TO_DATE('17-02-2020', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
     (41, TO_DATE('18-02-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'INCIDENT_RES', 703),
 
-    -- 🔄 Marta Zając (SOC Analyst)
+    --  Marta Zając (SOC Analyst)
     (42, TO_DATE('26-04-2017', 'dd-MM-yyyy'), TO_DATE('25-04-2021', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (42, TO_DATE('26-04-2021', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SOC_ANALYST', 704),
 
-    -- 🔄 Ivan Petrov (Zero Trust)
+    --  Ivan Petrov (Zero Trust)
     (43, TO_DATE('04-07-2018', 'dd-MM-yyyy'), TO_DATE('03-07-2022', 'dd-MM-yyyy'), 'SEC_ANALYST', 701),
     (43, TO_DATE('04-07-2022', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'ZERO_TRUST', 705),
 
-    -- 🔄 Felix Bauer (Auto Pilot)
+    --  Felix Bauer (Auto Pilot)
     (44, TO_DATE('12-09-2010', 'dd-MM-yyyy'), TO_DATE('11-09-2014', 'dd-MM-yyyy'), 'MECHANICAL_ENG', 800),
     (44, TO_DATE('12-09-2014', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'AUTO_PILOT', 800),
 
-    -- 🔄 Nina Scholz (Battery Scientist)
+    --  Nina Scholz (Battery Scientist)
     (45, TO_DATE('20-11-2011', 'dd-MM-yyyy'), TO_DATE('19-11-2015', 'dd-MM-yyyy'), 'CHEMIST', 901),
     (45, TO_DATE('20-11-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'BATTERY_SCIENTIST', 801),
 
-    -- 🔄 Tomas Wójcik (Vehicle AI)
+    --  Tomas Wójcik (Vehicle AI)
     (46, TO_DATE('28-01-2012', 'dd-MM-yyyy'), TO_DATE('27-01-2016', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (46, TO_DATE('28-01-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'VEHICLE_AI', 804),
 
-    -- 🔄 Julian Rossi (Connected Car)
+    --  Julian Rossi (Connected Car)
     (47, TO_DATE('06-04-2013', 'dd-MM-yyyy'), TO_DATE('05-04-2017', 'dd-MM-yyyy'), 'IT_PROG', 60),
     (47, TO_DATE('06-04-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'CONNECTED_CAR', 805),
 
-    -- 🔄 Sofia Ramírez (Beverage Chemist)
+    --  Sofia Ramírez (Beverage Chemist)
     (48, TO_DATE('14-06-2011', 'dd-MM-yyyy'), TO_DATE('13-06-2015', 'dd-MM-yyyy'), 'LAB_TECH', 901),
     (48, TO_DATE('14-06-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'BEVERAGE_CHEMIST', 901),
 
-    -- 🔄 Mateo Gómez (Sustainability Packaging)
+    --  Mateo Gómez (Sustainability Packaging)
     (49, TO_DATE('22-08-2012', 'dd-MM-yyyy'), TO_DATE('21-08-2016', 'dd-MM-yyyy'), 'ENV_ENGINEER', 1400),
     (49, TO_DATE('22-08-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SUSTAIN_PACKAGING', 902),
 
-    -- 🔄 Elena Vega (Digital Consumer)
+    --  Elena Vega (Digital Consumer)
     (50, TO_DATE('01-10-2013', 'dd-MM-yyyy'), TO_DATE('30-09-2017', 'dd-MM-yyyy'), 'MK_REP', 20),
     (50, TO_DATE('01-10-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'DIGI_CONSUMER', 905),
 
-    -- 🔄 Diego López (LatAm Ops)
+    --  Diego López (LatAm Ops)
     (51, TO_DATE('09-12-2014', 'dd-MM-yyyy'), TO_DATE('08-12-2018', 'dd-MM-yyyy'), 'SA_REP', 80),
     (51, TO_DATE('09-12-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LATAM_BEV_OPS', 904),
 
-    -- 🔄 Aisha Abdullah (Regional Manager)
+    --  Aisha Abdullah (Regional Manager)
     (52, TO_DATE('17-02-2010', 'dd-MM-yyyy'), TO_DATE('16-02-2014', 'dd-MM-yyyy'), 'MK_REP', 20),
     (52, TO_DATE('17-02-2014', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_REG_MGR', 1200),
 
-    -- 🔄 Lukas Weber (EMEA Regional)
+    --  Lukas Weber (EMEA Regional)
     (53, TO_DATE('25-04-2011', 'dd-MM-yyyy'), TO_DATE('24-04-2015', 'dd-MM-yyyy'), 'SA_REP', 80),
     (53, TO_DATE('25-04-2015', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_REG_MGR', 1201),
 
-    -- 🔄 Chen Wei (APAC Regional)
+    --  Chen Wei (APAC Regional)
     (54, TO_DATE('03-07-2012', 'dd-MM-yyyy'), TO_DATE('02-07-2016', 'dd-MM-yyyy'), 'SA_REP', 80),
     (54, TO_DATE('03-07-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_REG_MGR', 1202),
 
-    -- 🔄 Javier Morales (Iberia Regional)
+    --  Javier Morales (Iberia Regional)
     (55, TO_DATE('11-09-2013', 'dd-MM-yyyy'), TO_DATE('10-09-2017', 'dd-MM-yyyy'), 'SA_REP', 80),
     (55, TO_DATE('11-09-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_REG_MGR', 1205),
 
-    -- 🔄 Piotr Kaczmarek (Central Europe)
+    --  Piotr Kaczmarek (Central Europe)
     (56, TO_DATE('19-11-2014', 'dd-MM-yyyy'), TO_DATE('18-11-2018', 'dd-MM-yyyy'), 'SA_REP', 80),
     (56, TO_DATE('19-11-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'LT_REG_MGR', 1204),
 
-    -- 🔄 Grace Lin (HR Business Partner)
+    --  Grace Lin (HR Business Partner)
     (57, TO_DATE('27-01-2012', 'dd-MM-yyyy'), TO_DATE('26-01-2016', 'dd-MM-yyyy'), 'HR_REP', 1500),
     (57, TO_DATE('27-01-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'HR_BUS_PARTNER', 1500),
 
-    -- 🔄 Emilia Nowak (HR Rep → Manager)
+    --  Emilia Nowak (HR Rep → Manager)
     (58, TO_DATE('05-04-2013', 'dd-MM-yyyy'), TO_DATE('04-04-2017', 'dd-MM-yyyy'), 'HR_ASSISTANT', 1500),
     (58, TO_DATE('05-04-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'HR_REP', 1500),
 
-    -- 🔄 Ricardo Suárez (HR Rep)
+    --  Ricardo Suárez (HR Rep)
     (59, TO_DATE('13-06-2014', 'dd-MM-yyyy'), TO_DATE('12-06-2018', 'dd-MM-yyyy'), 'HR_ASSISTANT', 1500),
     (59, TO_DATE('13-06-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'HR_REP', 1500),
 
-    -- 🔄 Anika Desai (HR Rep)
+    --  Anika Desai (HR Rep)
     (60, TO_DATE('21-08-2015', 'dd-MM-yyyy'), TO_DATE('20-08-2019', 'dd-MM-yyyy'), 'HR_ASSISTANT', 1500),
     (60, TO_DATE('21-08-2019', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'HR_REP', 1500),
 
-    -- 🔄 Ben Carter (Finance Analyst → Senior)
+    --  Ben Carter (Finance Analyst → Senior)
     (61, TO_DATE('29-10-2016', 'dd-MM-yyyy'), TO_DATE('28-10-2020', 'dd-MM-yyyy'), 'FIN_ANALYST', 1600),
     (61, TO_DATE('29-10-2020', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FIN_ANALYST_SR', 1600),
 
-    -- 🔄 Lina Hassan (Finance Analyst)
+    --  Lina Hassan (Finance Analyst)
     (62, TO_DATE('06-01-2017', 'dd-MM-yyyy'), TO_DATE('05-01-2021', 'dd-MM-yyyy'), 'FIN_ASSISTANT', 1600),
     (62, TO_DATE('06-01-2021', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FIN_ANALYST', 1600),
 
-    -- 🔄 Mateo Castro (Finance Analyst)
+    --  Mateo Castro (Finance Analyst)
     (63, TO_DATE('14-03-2018', 'dd-MM-yyyy'), TO_DATE('13-03-2022', 'dd-MM-yyyy'), 'FIN_ASSISTANT', 1600),
     (63, TO_DATE('14-03-2022', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FIN_ANALYST', 1600),
 
-    -- 🔄 Zara Malik (Finance Analyst)
+    --  Zara Malik (Finance Analyst)
     (64, TO_DATE('22-05-2019', 'dd-MM-yyyy'), TO_DATE('21-05-2023', 'dd-MM-yyyy'), 'FIN_ASSISTANT', 1600),
     (64, TO_DATE('22-05-2023', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'FIN_ANALYST', 1600),
 
-    -- 🔄 Leo Schäfer (Sustainability Engineer)
+    --  Leo Schäfer (Sustainability Engineer)
     (65, TO_DATE('10-07-2012', 'dd-MM-yyyy'), TO_DATE('09-07-2016', 'dd-MM-yyyy'), 'ENV_ENGINEER', 1400),
     (65, TO_DATE('10-07-2016', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'SUSTAIN_ENG', 1400),
 
-    -- 🔄 Yara Nasr (Carbon Analyst)
+    --  Yara Nasr (Carbon Analyst)
     (66, TO_DATE('18-09-2013', 'dd-MM-yyyy'), TO_DATE('17-09-2017', 'dd-MM-yyyy'), 'ENV_SCIENTIST', 1400),
     (66, TO_DATE('18-09-2017', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'CARBON_ANALYST', 1401),
 
-    -- 🔄 Filip Mazur (Circular Design)
+    --  Filip Mazur (Circular Design)
     (67, TO_DATE('26-11-2014', 'dd-MM-yyyy'), TO_DATE('25-11-2018', 'dd-MM-yyyy'), 'DESIGNER', 1404),
     (67, TO_DATE('26-11-2018', 'dd-MM-yyyy'), TO_DATE('31-12-2023', 'dd-MM-yyyy'), 'CIRCULAR_DESIGN', 1404);
-
--- Total: 100 job history records
