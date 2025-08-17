@@ -5,6 +5,7 @@ import com.smg.config.SMGConfig;
 import com.smg.logging.ErrorLogger;
 import com.smg.logging.SummaryLogger;
 import com.smg.sqlparser.parser.SQL99.SqlSchemaParser;
+import com.smg.sqlparser.services.SqlGeneratorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.smg.sqlparser.domain.sql.Schema;
@@ -18,7 +19,6 @@ import java.util.stream.Collectors;
  * This class orchestrates the entire data generation process, including
  * configuration loading, command-line argument parsing, schema management,
  * and data generation.
- *
  * The application's workflow is as follows:
  * 1. Load default configuration from `smg.properties`.
  * 2. Override configuration settings with command-line arguments.
@@ -29,8 +29,10 @@ import java.util.stream.Collectors;
  */
 public class SMGApplication {
 
+	private static final Path schemaPath = Path.of("C:\\Users\\joseb\\Desktop\\SMG-SmartMockGenerator\\src\\main\\resources\\models\\hr\\struct\\HR_struct.sql");
 	private static final Logger LOGGER = LoggerFactory.getLogger(SMGApplication.class);
-
+	private static final Integer rowsPerTable = 10;
+	
 	/**
 	 * The main entry point for the SMG application.
 	 *
@@ -51,15 +53,19 @@ public class SMGApplication {
 			validateConfig(config);
 
 			// 4. Load and clean the schema(s) based on the configuration.
-			Path hr_path = Path.of("C:\\Users\\joseb\\Desktop\\SMG-SmartMockGenerator\\src\\main\\resources\\models\\hr\\struct\\HR_struct.sql");
+			Schema schema = SqlSchemaParser.parseSchemaFromFile(schemaPath, "HR");
+			SqlGeneratorService sqlgService = new SqlGeneratorService(schema);
 			
-			Schema schema = SqlSchemaParser.parseSchemaFromFile(hr_path, "HR");
-			Set<String> selectedTable = config.getTables();
-			String create_hr = schema.getTables().get("departments").getCreateSql(selectedTable);
+			// 5. Create  DDL SQl tables
+			String ddl = sqlgService.generateCreateSql(config.getTables());
+			System.out.println("---------------------------CREATE SQL---------------------------");
+			System.out.println(ddl);
 			
-			// tablas --> departments --> create-table --> fk desconectadas
-			System.out.println(create_hr);
-
+			// 5. Create Insert SQL rows
+			String insert = sqlgService.generateInsertSql(config.getTables(), rowsPerTable);
+			System.out.println("---------------------------INSERT SQL---------------------------");
+			System.out.println(insert);
+			
 			summaryLogger.logSummary("SMG process finished successfully.");
 
 		} catch (IllegalArgumentException e) {

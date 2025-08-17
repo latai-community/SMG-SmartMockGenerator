@@ -30,7 +30,7 @@ public class DataGenerator {
 	private final SummaryLogger summaryLogger;
 	private final MockarooClient mockarooClient;
 	private final MockarooSchemaGenerator mockarooSchemaGenerator;
-	private final ObjectMapper objectMapper; // Added to handle JSON serialization
+	private final ObjectMapper objectMapper;
 	
 	public DataGenerator(SMGConfig config, ErrorLogger errorLogger, SummaryLogger summaryLogger) {
 		this.config = config;
@@ -38,7 +38,7 @@ public class DataGenerator {
 		this.summaryLogger = summaryLogger;
 		this.mockarooClient = new MockarooClient(config.getMockApiKey(), errorLogger);
 		this.mockarooSchemaGenerator = new MockarooSchemaGenerator();
-		this.objectMapper = new ObjectMapper(); // Initialized here
+		this.objectMapper = new ObjectMapper();
 	}
 	
 	/**

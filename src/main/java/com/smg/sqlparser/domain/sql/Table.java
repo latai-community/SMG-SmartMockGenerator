@@ -48,22 +48,58 @@ public class Table {
     }
     
     
-    public String getCreateSql(Set<String> selectedTables) {
+    public Table getFilteredCopy(Set<String> selectedTables) {
+        Table filtered = new Table(this.name);
+        
+        // Copiar columnas válidas
+        for (Column col : this.columns) {
+            boolean skip = foreignKeys.stream().anyMatch(fk ->
+                fk.getSourceColumns().contains(col) &&
+                    (fk.getTargetTable() == null || !selectedTables.contains(fk.getTargetTable().getName()))
+            );
+            
+            if (!skip) {
+                filtered.addColumn(col);
+            }
+        }
+        
+        // Copiar PK solo si sus columnas existen todavía
+        if (primaryKey != null) {
+            List<Column> pkCols = primaryKey.getColumns().stream()
+                .filter(filtered.getColumns()::contains)
+                .toList();
+            
+            if (!pkCols.isEmpty()) {
+                PrimaryKey pk = new PrimaryKey();
+                pk.setColumns(pkCols);
+                filtered.setPrimaryKey(pk);
+            }
+        }
+        
+        // Copiar constraints únicas que apliquen
+        for (Unique uc : uniqueConstraints) {
+            if (filtered.getColumns().stream().anyMatch(c -> uc.getColumnNames().contains(c.getName()))) {
+                filtered.getUniqueConstraints().add(uc);
+            }
+        }
+        
+        // Copiar FKs que apunten a tablas seleccionadas
+        for (ForeignKey fk : foreignKeys) {
+            if (fk.getTargetTable() != null && selectedTables.contains(fk.getTargetTable().getName())) {
+                filtered.getForeignKeys().add(fk);
+            }
+        }
+        
+        return filtered;
+    }
+    
+    public String toCreateSql() {
         StringBuilder sb = new StringBuilder();
         sb.append("CREATE TABLE ").append(name).append(" (\n");
         
         List<String> columnDefs = new ArrayList<>();
         
         for (Column col : columns) {
-            boolean skip = foreignKeys.stream().anyMatch(fk ->
-                fk.getSourceColumns().contains(col) &&
-                    (fk.getTargetTable() == null || !selectedTables.contains(fk.getTargetTable().getName()))
-            );
-            
-            if (skip) {
-                continue;
-            }
-            
             StringBuilder colDef = new StringBuilder();
             colDef.append(col.getName()).append(" ").append(col.getType());
             
@@ -99,22 +135,18 @@ public class Table {
         }
         
         for (ForeignKey fk : foreignKeys) {
-            if (fk.getTargetTable() != null &&
-                selectedTables.contains(fk.getTargetTable().getName())) {
-                
-                String sourceCols = fk.getSourceColumns().stream()
-                    .map(Column::getName)
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("");
-                String targetCols = fk.getTargetColumns().stream()
-                    .map(Column::getName)
-                    .reduce((a, b) -> a + ", " + b)
-                    .orElse("");
-                columnDefs.add(
-                    "FOREIGN KEY (" + sourceCols + ") REFERENCES " +
-                        fk.getTargetTable().getName() + " (" + targetCols + ")"
-                );
-            }
+            String sourceCols = fk.getSourceColumns().stream()
+                .map(Column::getName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+            String targetCols = fk.getTargetColumns().stream()
+                .map(Column::getName)
+                .reduce((a, b) -> a + ", " + b)
+                .orElse("");
+            columnDefs.add(
+                "FOREIGN KEY (" + sourceCols + ") REFERENCES " +
+                    fk.getTargetTable().getName() + " (" + targetCols + ")"
+            );
         }
         
         sb.append("  ").append(String.join(",\n  ", columnDefs));
