@@ -12,28 +12,32 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class SqlSchemaParser {
-
+	
 	public static Schema parseSchemaFromFile(Path filePath, String schemaName) throws IOException, Exception {
 		String sqlContent = Files.readString(filePath);
+		return parseSchemaFromString(sqlContent, schemaName);
+	}
+	
+	public static Schema parseSchemaFromString(String sqlContent, String schemaName) throws Exception {
 		Schema schema = new Schema(schemaName);
 		String cleanSqlContent = cleanComments(sqlContent);
-
+		
 		List<Statement> statements = CCJSqlParserUtil.parseStatements(cleanSqlContent);
-
+		
 		for (Statement stmt : statements) {
 			if (stmt instanceof CreateTable createTable) {
 				Table table = TableParser.parseTableWithoutForeignKeys(createTable);
 				schema.addTable(table);
 			}
 		}
-
+		
 		for (Statement stmt : statements) {
 			if (stmt instanceof CreateTable createTable) {
 				Table table = schema.getTables().get(createTable.getTable().getName());
 				TableParser.addForeignKeys(table, createTable, schema);
 			}
 		}
-
+		
 		return schema;
 	}
 	
